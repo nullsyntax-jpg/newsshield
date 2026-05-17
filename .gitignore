@@ -1,0 +1,11 @@
+# Ignore data folder (hosted on Google Drive)
+data/
+
+# Ignore paper folder (hosted on Overleaf)
+paper/
+
+# Standard Python ignores
+__pycache__/
+*.pyc
+.env
+.ipynb_checkpoints/ 
