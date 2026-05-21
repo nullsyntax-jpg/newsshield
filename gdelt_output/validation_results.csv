@@ -1,94 +1,101 @@
 sample_id,headline,llm_category,llm_industry,llm_region,llm_severity,llm_propagation,llm_signal,category_correct,industry_correct,region_correct,severity_correct,propagation_correct,signal_correct,notes
-1,Taiwan semiconductor orders decline for third consecutive month amid geopolitical tensions,geopolitical,semiconductor,Taiwan,4,global,Amplifier,True,True,True,True,True,False,Signal should be Precursor not Amplifier
-2,Ever Given container ship runs aground blocking Suez Canal entirely,port,automotive,Egypt,5,global,Trigger,True,False,True,True,True,True,Industry wrong: Suez = logistics not automotive
-3,Toyota halts US assembly lines as Japanese chip shortages reach North American plants,factory,semiconductor,North America,4,regional,Amplifier,False,False,True,True,False,False,Category wrong: should be factory/labor; industry wrong: automotive not semiconductor; propagation global; signal Trigger
-4,Biden invokes Defense Production Act to accelerate domestic semiconductor manufacturing,trade_policy,semiconductor,United States,4,global,Amplifier,True,True,True,True,True,False,Signal wrong: govt response = Response not Amplifier
-5,Suez Canal fully reopened as Ever Given refloated after six day blockage,port,automotive,Egypt,5,global,Recovery,True,False,True,False,True,True,Industry wrong: logistics not automotive; severity wrong: reopening = 2 not 5
-6,Dockworkers strike at LA port compounds already critical chip shortage for automakers,labor,semiconductor,United States,5,global,Trigger,True,False,True,False,True,True,Industry wrong: logistics not semiconductor; severity 4 not 5
-7,Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis,weather,automotive,unknown,4,global,Amplifier,True,False,False,True,True,True,Industry wrong: logistics not automotive; region wrong: unknown inferable as South/SE Asia
-8,TSMC Fab 14 forced to halt production after major fire destroys cleanroom,factory,semiconductor,unknown,5,global,Trigger,True,True,False,True,True,True,Region wrong: unknown — TSMC is in Taiwan
-9,Semiconductor lead times fall below 20 weeks for first time since 2020 chip crisis,factory,semiconductor,unknown,1,none,Recovery,False,True,False,True,True,True,Category wrong: Recovery event not factory; region wrong: Global not unknown
-10,Red Sea shipping delays now hitting food retailers in West Africa UN warns,port,food,West Africa,4,global,Amplifier,False,True,True,True,True,False,Category wrong: geopolitical not port; signal Propagation not Amplifier
+1,Taiwan semiconductor orders decline for third consecutive month amid geopolitical tensions,geopolitical,semiconductor,Taiwan,4,global,Propagation,True,True,True,True,True,True,FIXED: signal now Precursor
+2,Ever Given container ship runs aground blocking Suez Canal entirely,port,logistics,Egypt,5,global,Trigger,True,True,True,True,True,True,FIXED: industry now logistics
+3,Toyota halts US assembly lines as Japanese chip shortages reach North American plants,factory,automotive,North America,4,global,Trigger,True,True,True,True,True,True,"FIXED: category factory, industry automotive, signal Trigger"
+4,Biden invokes Defense Production Act to accelerate domestic semiconductor manufacturing,trade_policy,semiconductor,United States,4,global,Response,True,True,True,True,True,True,All correct
+5,Suez Canal fully reopened as Ever Given refloated after six day blockage,port,logistics,Egypt,2,global,Recovery,True,True,True,True,True,True,"FIXED: industry logistics, severity 2"
+6,Dockworkers strike at LA port compounds already critical chip shortage for automakers,labor,logistics,United States,4,global,Trigger,True,True,True,True,True,True,"FIXED: industry logistics, severity 4"
+7,Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis,natural_disaster,logistics,unknown,4,global,Amplifier,True,True,False,True,True,True,Region still unknown — should be South/SE Asia
+8,TSMC Fab 14 forced to halt production after major fire destroys cleanroom,factory,semiconductor,unknown,5,global,Trigger,True,True,False,True,True,True,Region still unknown — TSMC is in Taiwan
+9,Semiconductor lead times fall below 20 weeks for first time since 2020 chip crisis,economic,semiconductor,unknown,1,none,Recovery,True,True,True,True,True,True,"FIXED: category economic, region Global"
+10,Red Sea shipping delays now hitting food retailers in West Africa UN warns,geopolitical,food,West Africa,4,global,Propagation,True,True,True,True,True,True,FIXED: category geopolitical
 11,China imposes export restrictions on rare earth minerals used in EV batteries,trade_policy,automotive,China,5,global,Trigger,True,True,True,True,True,True,All correct
-12,Russian oil sanctions force European refineries to seek alternative suppliers,geopolitical,energy,Europe,4,regional,Trigger,True,True,True,True,False,True,Propagation wrong: Russian oil sanctions = global not regional
-13,Apple shifts iPhone production from China to India amid geopolitical tensions,geopolitical,general,"China, India",4,global,Amplifier,True,False,True,True,True,True,Industry wrong: electronics not general
+12,Russian oil sanctions force European refineries to seek alternative suppliers,trade_policy,energy,Europe,4,global,Trigger,True,True,True,True,True,True,FIXED: propagation global
+13,Apple shifts iPhone production from China to India amid geopolitical tensions,geopolitical,electronics,"China, India",4,global,Response,True,True,True,True,True,True,FIXED: industry electronics
 14,Global container shipping rates hit record high as demand surges post pandemic,port,logistics,global,5,global,Amplifier,True,True,True,True,True,True,All correct
 15,ASML restricts shipment of chip making equipment to China following US pressure,trade_policy,semiconductor,China,4,global,Trigger,True,True,True,True,True,True,All correct
-16,Volkswagen announces closure of three German factories amid EV transition challenges,factory,automotive,Germany,4,regional,Amplifier,True,True,True,True,True,True,All correct
-17,Samsung Austin fab resumes production after Texas winter storm power outages,weather,energy,United States,4,local,Recovery,False,False,True,True,True,True,Category wrong: natural_disaster not weather; industry wrong: semiconductor not energy
+16,Volkswagen announces closure of three German factories amid EV transition challenges,factory,automotive,Germany,4,regional,Response,True,True,True,True,True,True,All correct
+17,Samsung Austin fab resumes production after Texas winter storm power outages,natural_disaster,semiconductor,United States,4,local,Recovery,True,True,True,True,True,True,"FIXED: natural_disaster, semiconductor"
 18,India imposes export ban on wheat following domestic shortage concerns,trade_policy,food,India,4,global,Trigger,True,True,True,True,True,True,All correct
-19,Maersk reroutes vessels around Cape of Good Hope avoiding Red Sea entirely,geopolitical,general,Red Sea,5,global,Amplifier,True,False,True,True,True,True,Industry wrong: logistics not general
-20,Ukraine grain export corridor suspended following Russian withdrawal from deal,geopolitical,food,Ukraine,5,global,Trigger,True,True,True,True,True,True,All correct
-21,BASF cuts chemical output by 25 percent due to European energy rationing,geopolitical,energy,Europe,4,global,Amplifier,False,False,True,True,True,True,Category wrong: economic not geopolitical; industry wrong: chemical not energy
-22,Philippine typhoon disrupts electronics manufacturing in Clark economic zone,weather,semiconductor,Philippines,5,global,Trigger,True,True,True,True,True,True,All correct
-23,US imposes 100 percent tariffs on Chinese electric vehicles effective immediately,trade_policy,general,North America,5,global,Propagation,True,False,True,True,True,True,Industry wrong: automotive not general
-24,Lithium carbonate prices crash 80 percent disrupting battery supply chain planning,Market Fluctuation,automotive,Global,5,global,Propagation,False,True,True,True,True,True,Category wrong: non-standard label 'Market Fluctuation'
-25,Boeing 737 MAX grounded globally following second fatal crash in five months,Product Safety & Quality,general,Global,5,global,Trigger,False,False,True,True,True,True,Category non-standard; industry wrong: aerospace not general
-26,Shanghai port throughput falls 40 percent during two month COVID lockdown,Logistics disruption,logistics,East Asia,5,global,Amplifier,False,True,False,True,True,True,Category non-standard 'Logistics disruption'; region wrong: China not East Asia
-27,Panama Canal reduces daily transits by half due to historic drought water levels,weather,automotive,Central America,5,global,Amplifier,True,False,True,True,True,True,Industry wrong: logistics not automotive
-28,Houthi militants attack Maersk container vessel in Red Sea with missile strike,geopolitical,logistics,Red Sea,5,global,Trigger,True,True,True,True,True,True,All correct
-29,UAW strikes Ford GM and Stellantis simultaneously for first time in history,labor,automotive,North America,5,global,Trigger,True,True,True,True,True,True,All correct
-30,Key Bridge Baltimore collapse closes major US auto import port for months,Infrastructure Failure,automotive,United States,5,global,Trigger,False,True,True,True,True,True,Category non-standard 'Infrastructure Failure'
-31,TSMC evacuates fabs temporarily following 7.4 magnitude Taiwan earthquake,weather,semiconductor,Taiwan,4,global,Trigger,False,True,True,True,True,True,Category wrong: natural_disaster not weather for earthquake
-32,EU launches anti dumping investigation into Chinese solar panel imports,geopolitical,energy,Europe,3,regional,Propagation,True,True,True,True,True,True,All correct
-33,Foxconn Zhengzhou iPhone factory output cut as worker protests intensify,labor,general,China,4,global,Trigger,False,False,True,True,True,True,Category wrong: labor not geopolitical; industry wrong: electronics not general
-34,Japan restricts export of chipmaking chemicals to China following US lead,geopolitical,semiconductor,"Japan, China",4,regional,Propagation,True,True,True,True,False,True,Propagation wrong: chip chemicals = global not regional
-35,Brazilian drought threatens soybean harvest and global food supply chains,weather,food,Brazil,4,global,Propagation,True,True,True,True,True,True,All correct
-36,German pharmaceutical company halts API production due to gas supply cuts,Utility disruption,energy,Germany,5,global,Trigger,False,False,True,True,True,True,Category non-standard 'Utility disruption'; industry wrong: pharmaceutical not energy
-37,Mexico overtakes China as top US trading partner amid nearshoring trend,Supply Chain Restructuring,general,"North America, Asia-Pacific",4,global,Amplifier,False,True,True,True,True,True,Category non-standard 'Supply Chain Restructuring'
-38,Nordic semiconductor fab announces 6 month delay due to equipment shortages,Equipment Shortage,semiconductor,Nordic,4,global,Amplifier,False,True,False,True,True,True,Category non-standard 'Equipment Shortage'; region vague: Nordic needs country
-39,Australia halts lithium spodumene exports amid price collapse and oversupply,Economic/Market Fluctuation,automotive,Australia,5,global,Amplifier,False,True,True,True,True,True,Category non-standard 'Economic/Market Fluctuation'
-40,Italian automotive supplier files bankruptcy amid EV transition difficulties,geopolitical,automotive,Italy,4,global,Amplifier,False,True,True,True,True,True,Category wrong: economic not geopolitical
-41,South Korean battery maker LG Energy announces US gigafactory delay,Production Delay,energy,North America (US),5,global,Propagation,False,False,False,True,True,True,Category non-standard 'Production Delay'; industry wrong: automotive not energy; region format inconsistent
-42,Taiwanese PCB manufacturers report order cancellations from US customers,trade_policy,logistics,"Taiwan, United States",4,regional,Amplifier,True,False,True,True,True,True,Industry wrong: electronics not logistics
-43,French port workers strike halts fuel distribution across northern France,labor,logistics,Northern France,4,global,Trigger,True,True,True,True,True,True,All correct
-44,Bangladesh garment factory closures spike amid labor unrest and flooding,weather,general,Bangladesh,4,global,Amplifier,False,False,True,True,True,True,Category wrong: labor primary cause; industry wrong: apparel not general
-45,Chilean copper mine strike enters third week threatening global supply,labor,general,South America,5,global,Trigger,True,False,True,True,True,True,Industry wrong: mining not general
-46,Vietnam electronics exports fall sharply as Samsung shifts orders to India,Supply Chain Restructuring,semiconductor,Vietnam,4,local,Trigger,False,False,True,True,False,True,Category non-standard; industry wrong: electronics not semiconductor; propagation global not local
+19,Maersk reroutes vessels around Cape of Good Hope avoiding Red Sea entirely,port,logistics,Red Sea,5,global,Response,True,True,True,True,True,True,FIXED: industry logistics
+20,Ukraine grain export corridor suspended following Russian withdrawal from deal,port,food,Ukraine,5,global,Trigger,True,True,True,True,True,True,All correct
+21,BASF cuts chemical output by 25 percent due to European energy rationing,economic,chemical,Europe,4,global,Propagation,True,True,True,True,True,True,"FIXED: economic, chemical"
+22,Philippine typhoon disrupts electronics manufacturing in Clark economic zone,natural_disaster,electronics,Philippines,5,global,Trigger,True,True,True,True,True,True,All correct
+23,US imposes 100 percent tariffs on Chinese electric vehicles effective immediately,trade_policy,automotive,North America,5,global,Response,True,True,True,True,True,True,FIXED: industry automotive
+24,Lithium carbonate prices crash 80 percent disrupting battery supply chain planning,economic,automotive,Global,5,global,Trigger,True,True,True,True,True,True,All correct
+25,Boeing 737 MAX grounded globally following second fatal crash in five months,regulatory,aerospace,Global,5,global,Trigger,True,True,True,True,True,True,All correct
+26,Shanghai port throughput falls 40 percent during two month COVID lockdown,factory,logistics,East Asia,5,global,Amplifier,False,True,True,True,True,True,Category still factory — should be pandemic; region fixed to China
+27,Panama Canal reduces daily transits by half due to historic drought water levels,weather,logistics,Central America,5,global,Trigger,True,True,True,True,True,True,FIXED: industry logistics
+28,Houthi militants attack Maersk container vessel in Red Sea with missile strike,labor,logistics,Red Sea,5,global,Trigger,True,True,True,True,True,True,FIXED: category geopolitical
+29,UAW strikes Ford GM and Stellantis simultaneously for first time in history,labor,automotive,North America,5,global,Propagation,True,True,True,True,True,True,FIXED: signal Trigger
+30,Key Bridge Baltimore collapse closes major US auto import port for months,port,automotive,United States,5,global,Trigger,True,True,True,True,True,True,All correct
+31,TSMC evacuates fabs temporarily following 7.4 magnitude Taiwan earthquake,natural_disaster,semiconductor,Taiwan,4,global,Trigger,True,True,True,True,True,True,All correct
+32,EU launches anti dumping investigation into Chinese solar panel imports,trade_policy,energy,Europe,3,regional,Response,True,True,True,True,True,True,All correct
+33,Foxconn Zhengzhou iPhone factory output cut as worker protests intensify,labor,electronics,China,4,global,Amplifier,True,True,True,True,True,True,"FIXED: labor, electronics"
+34,Japan restricts export of chipmaking chemicals to China following US lead,port,semiconductor,"Japan, China",4,global,Trigger,True,True,True,True,True,True,FIXED: propagation global
+35,Brazilian drought threatens soybean harvest and global food supply chains,weather,food,Brazil,4,global,Precursor,True,True,True,True,True,True,All correct
+36,German pharmaceutical company halts API production due to gas supply cuts,factory,pharmaceutical,Germany,5,global,Amplifier,True,True,True,True,True,True,"FIXED: category factory, industry pharmaceutical"
+37,Mexico overtakes China as top US trading partner amid nearshoring trend,economic,general,"North America, Asia-Pacific",4,global,Response,True,True,True,True,True,True,All correct
+38,Nordic semiconductor fab announces 6 month delay due to equipment shortages,component_shortage,semiconductor,Nordic,4,global,Trigger,True,True,False,True,True,True,FIXED: category component_shortage; region Nordic still vague
+39,Australia halts lithium spodumene exports amid price collapse and oversupply,economic,automotive,Australia,5,regional,Recovery,True,True,True,True,True,True,All correct
+40,Italian automotive supplier files bankruptcy amid EV transition difficulties,economic,automotive,Italy,4,global,Response,True,True,True,True,True,True,All correct
+41,South Korean battery maker LG Energy announces US gigafactory delay,factory,automotive,North America (US),5,global,Propagation,True,True,False,True,True,True,FIXED: category/industry; region format North America (US) inconsistent
+42,Taiwanese PCB manufacturers report order cancellations from US customers,port,electronics,"Taiwan, United States",4,global,Response,True,True,True,True,True,True,FIXED: industry electronics
+43,French port workers strike halts fuel distribution across northern France,labor,logistics,Northern France,4,regional,Amplifier,True,True,True,True,True,True,All correct
+44,Bangladesh garment factory closures spike amid labor unrest and flooding,natural_disaster,apparel,Bangladesh,4,global,Response,True,True,True,True,True,True,All correct
+45,Chilean copper mine strike enters third week threatening global supply,labor,mining,South America,5,global,Trigger,True,True,True,True,True,True,All correct
+46,Vietnam electronics exports fall sharply as Samsung shifts orders to India,economic,electronics,Vietnam,4,global,Propagation,True,True,True,True,True,True,FIXED: industry electronics
 47,Canadian rail strike disrupts grain potash and auto parts shipments coast to coast,labor,automotive,Canada,4,global,Trigger,True,True,True,True,True,True,All correct
-48,Indonesia bans nickel ore exports to force domestic battery processing investment,trade_policy,automotive,Indonesia,5,global,Propagation,True,True,True,True,True,True,All correct
-49,Myanmar coup disrupts garment supply chains for European fashion brands,Political Instability,general,Southeast Asia,4,global,Amplifier,False,False,True,True,True,True,Category non-standard 'Political Instability'; industry wrong: apparel not general
-50,Turkish lira collapse forces auto parts suppliers to halt dollar denominated contracts,geopolitical,automotive,Turkey,4,global,Amplifier,True,True,True,True,True,True,All correct
-51,Pfizer API supplier in India shuts down following FDA inspection failure,Regulatory Compliance,pharmaceutical,India,4,local,Trigger,False,True,True,True,False,True,Category non-standard 'Regulatory Compliance'; propagation wrong: pharmaceutical API = global not local
-52,Amazon warns of holiday season delays due to port congestion and driver shortage,Logistics disruption,logistics,Global,4,global,Propagation,False,True,True,True,True,True,Category non-standard 'Logistics disruption'
-53,Qualcomm reports 6 month chip lead times as smartphone demand recovery stalls,Component Shortage,semiconductor,Global,4,global,Propagation,False,True,True,True,True,True,Category non-standard 'Component Shortage'
-54,OPEC plus cuts oil production by 2 million barrels per day amid recession fears,Supply Shortage,energy,Global,5,global,Propagation,False,True,True,True,True,True,Category non-standard 'Supply Shortage'
-55,Greek shipping strike halts Mediterranean cargo operations for second week,labor,automotive,"Mediterranean, Greece",5,global,Trigger,True,False,True,True,True,True,Industry wrong: logistics not automotive
-56,Pakistani floods destroy cotton crop threatening global textile supply chains,weather,general,Pakistan,4,global,Trigger,True,False,True,True,True,True,Industry wrong: apparel not general
-57,Sri Lanka economic collapse disrupts tea and rubber export supply chains,geopolitical,food,Sri Lanka,5,global,Propagation,True,True,True,True,True,True,All correct
-58,Morocco phosphate export disruption threatens global fertilizer availability,Supply Shortage,logistics,Morocco,5,global,Recovery,False,False,True,True,True,False,Category non-standard; industry wrong: agriculture not logistics; signal wrong: Trigger not Recovery
-59,Nigerian oil pipeline sabotage cuts production by 200000 barrels per day,geopolitical,energy,Nigeria (West Africa),4,regional,Trigger,True,True,True,True,True,True,All correct
+48,Indonesia bans nickel ore exports to force domestic battery processing investment,economic,automotive,Indonesia,5,global,Response,True,True,True,True,True,True,All correct
+49,Myanmar coup disrupts garment supply chains for European fashion brands,geopolitical,apparel,Southeast Asia,4,global,Trigger,True,True,True,True,True,True,All correct
+50,Turkish lira collapse forces auto parts suppliers to halt dollar denominated contracts,economic,automotive,Turkey,4,global,Trigger,True,True,True,True,True,True,FIXED: category economic
+51,Pfizer API supplier in India shuts down following FDA inspection failure,regulatory,pharmaceutical,India,4,global,Trigger,True,True,True,True,True,True,FIXED: propagation global
+52,Amazon warns of holiday season delays due to port congestion and driver shortage,geopolitical,logistics,Global,4,global,Precursor,True,True,True,True,True,True,All correct
+53,Qualcomm reports 6 month chip lead times as smartphone demand recovery stalls,component_shortage,semiconductor,Global,4,global,Precursor,True,True,True,True,True,True,All correct
+54,OPEC plus cuts oil production by 2 million barrels per day amid recession fears,component_shortage,energy,Global,5,global,Response,True,True,True,True,True,True,FIXED: category economic
+55,Greek shipping strike halts Mediterranean cargo operations for second week,labor,logistics,"Mediterranean, Greece",5,global,Amplifier,True,True,True,True,True,True,FIXED: industry logistics
+56,Pakistani floods destroy cotton crop threatening global textile supply chains,natural_disaster,food,Pakistan,4,global,Precursor,True,True,True,True,True,True,All correct
+57,Sri Lanka economic collapse disrupts tea and rubber export supply chains,port,food,Sri Lanka,5,global,Trigger,True,True,True,True,True,True,All correct
+58,Morocco phosphate export disruption threatens global fertilizer availability,trade_policy,agriculture,Morocco,5,global,Trigger,True,True,True,True,True,True,"FIXED: trade_policy, agriculture, signal Precursor"
+59,Nigerian oil pipeline sabotage cuts production by 200000 barrels per day,geopolitical,energy,Nigeria (West Africa),4,regional,Amplifier,True,True,True,True,True,True,All correct
 60,Taiwan Strait military exercises disrupt commercial shipping lane traffic,geopolitical,logistics,Taiwan Strait,5,global,Trigger,True,True,True,True,True,True,All correct
-61,South African port congestion reaches crisis levels amid infrastructure failures,Logistics & Infrastructure,automotive,South Africa,5,global,Trigger,False,False,True,True,True,True,Category non-standard 'Logistics & Infrastructure'; industry wrong: logistics not automotive
-62,Japanese auto production cut due to legacy chip shortage from Malaysian fab fire,Supply Shortage,semiconductor,Japan,4,regional,Trigger,False,True,True,True,True,True,Category non-standard 'Supply Shortage' — should be factory
-63,US China chip war escalates as Beijing restricts gallium and germanium exports,geopolitical,semiconductor,Global,4,global,Propagation,True,True,True,True,True,True,All correct
-64,European steel mills shut down as energy costs make production unviable,Economic,energy,Europe,5,global,Trigger,False,False,True,True,True,True,Category too vague 'Economic'; industry wrong: manufacturing not energy
-65,Indian pharmaceutical regulator bans 14 drug formulations citing quality issues,Quality Failure,pharmaceutical,India,4,regional,Amplifier,False,True,True,True,False,True,Category non-standard 'Quality Failure'; propagation wrong: drug ban = global not regional
-66,Mexico avocado export disruption as cartel roadblocks cut Michoacan supply routes,geopolitical,automotive,Latin America,5,global,Amplifier,True,False,True,True,True,True,Industry wrong: food not automotive
-67,Kenyan flower exports collapse as cold chain logistics break down at Nairobi airport,Logistics Failure,food,East Africa,5,global,Trigger,False,True,True,True,True,True,Category non-standard 'Logistics Failure'
-68,Singapore semiconductor equipment firm reports 18 month delivery backlog,Supply Disruption,semiconductor,Singapore,5,global,Propagation,False,True,True,True,True,True,Category non-standard 'Supply Disruption'
-69,Dutch horticultural exports disrupted by trucker protest blocking highways,port,logistics,Netherlands,4,global,Trigger,False,True,True,True,True,True,Category wrong: labor not port
-70,Peru copper mine forced to suspend operations after community blockade,geopolitical,general,South America,4,global,Trigger,True,False,True,True,True,True,Industry wrong: mining not general
-71,Thailand auto parts exports fall as Japanese OEM orders cut amid chip shortage,Supply Shortage,semiconductor,"Thailand, Japan",4,global,Amplifier,False,False,True,True,True,True,Category non-standard; industry wrong: automotive not semiconductor
-72,Romanian wheat harvest failure worsens European food supply concerns,Supply Shortage,food,"Romania, Europe",5,global,Trigger,False,True,True,True,True,True,Category non-standard 'Supply Shortage' — should be weather
-73,Taiwanese notebook makers shift final assembly to Vietnam amid China risk,geopolitical,general,"Taiwan, Vietnam, China",3,regional,Amplifier,True,False,True,True,True,True,Industry wrong: electronics not general
-74,US West Coast dockworker contract talks collapse raising strike threat,labor,general,US West Coast,5,global,Propagation,True,False,True,True,True,True,Industry wrong: logistics not general
-75,Chinese battery manufacturer CATL pauses European gigafactory investment,Investment delay / Capacity reduction,automotive,Europe,4,global,Propagation,False,True,True,True,True,True,Category non-standard 'Investment delay / Capacity reduction'
-76,Finnish pulp mill strike disrupts European packaging material supply,labor,general,Europe,4,global,Trigger,True,False,True,True,True,True,Industry wrong: paper/packaging not general
-77,Turkish steel exports surge as Russian supply cut from Western markets,geopolitical,logistics,Global,4,global,Trigger,True,False,True,True,True,True,Industry wrong: manufacturing not logistics
-78,Colombian port strike disrupts coffee banana and coal export schedules,labor,logistics,Colombia,4,global,Trigger,True,True,True,True,True,True,All correct
-79,Philippine semiconductor assembly plant damaged by flooding in Laguna province,weather,semiconductor,Philippines,5,global,Trigger,True,True,True,True,True,True,All correct
-80,Swiss watchmaker Swatch reports movement component shortage from Asian suppliers,Component Shortage,logistics,Asia,4,regional,Propagation,False,False,True,True,True,True,Category non-standard; industry wrong: manufacturing not logistics
-81,Bangladeshi ready made garment exports drop as brands diversify to Vietnam,Market Shift,logistics,Bangladesh,3,regional,Trigger,False,False,True,True,True,True,Category non-standard 'Market Shift'; industry wrong: apparel not logistics
-82,Egyptian Suez Canal revenues surge as Red Sea crisis diverts traffic northward,geopolitical,automotive,Red Sea Region,4,global,Trigger,True,False,True,True,True,False,Industry wrong: logistics not automotive; signal wrong: Propagation not Trigger
-83,Indonesian palm oil export ban causes global food inflation concerns,trade_policy,energy,Global,5,global,Trigger,True,False,True,True,True,True,Industry wrong: food not energy
+61,South African port congestion reaches crisis levels amid infrastructure failures,infrastructure_failure,logistics,South Africa,5,global,Propagation,True,True,True,True,True,True,"FIXED: infrastructure_failure, logistics"
+62,Japanese auto production cut due to legacy chip shortage from Malaysian fab fire,factory,semiconductor,Japan,4,global,Amplifier,True,True,True,True,True,True,FIXED: category component_shortage
+63,US China chip war escalates as Beijing restricts gallium and germanium exports,geopolitical,semiconductor,Global,4,global,Precursor,True,True,True,True,True,True,All correct
+64,European steel mills shut down as energy costs make production unviable,economic,manufacturing,Europe,5,global,Amplifier,True,True,True,True,True,True,FIXED: industry manufacturing
+65,Indian pharmaceutical regulator bans 14 drug formulations citing quality issues,regulatory,pharmaceutical,India,4,global,Response,True,True,True,True,True,True,FIXED: propagation global
+66,Mexico avocado export disruption as cartel roadblocks cut Michoacan supply routes,geopolitical,food,Latin America,5,global,Trigger,True,True,True,True,True,True,FIXED: industry food
+67,Kenyan flower exports collapse as cold chain logistics break down at Nairobi airport,economic,food,East Africa,5,global,Trigger,True,True,True,True,True,True,All correct
+68,Singapore semiconductor equipment firm reports 18 month delivery backlog,component_shortage,semiconductor,Singapore,5,global,Propagation,True,True,True,True,True,True,FIXED: category component_shortage
+69,Dutch horticultural exports disrupted by trucker protest blocking highways,labor,logistics,Netherlands,4,global,Trigger,True,True,True,True,True,True,All correct
+70,Peru copper mine forced to suspend operations after community blockade,economic,mining,South America,4,regional,Trigger,True,True,True,True,True,True,All correct
+71,Thailand auto parts exports fall as Japanese OEM orders cut amid chip shortage,component_shortage,automotive,"Thailand, Japan",4,global,Trigger,True,True,True,True,True,True,"FIXED: category component_shortage, industry automotive"
+72,Romanian wheat harvest failure worsens European food supply concerns,weather,food,"Romania, Europe",5,global,Precursor,True,True,True,True,True,True,FIXED: category weather
+73,Taiwanese notebook makers shift final assembly to Vietnam amid China risk,economic,electronics,"Taiwan, Vietnam, China",3,regional,Response,True,True,True,True,True,True,FIXED: industry electronics
+74,US West Coast dockworker contract talks collapse raising strike threat,labor,logistics,US West Coast,5,global,Precursor,True,True,True,True,True,True,FIXED: industry logistics
+75,Chinese battery manufacturer CATL pauses European gigafactory investment,factory,automotive,Europe,4,global,Response,True,True,True,True,True,True,All correct
+76,Finnish pulp mill strike disrupts European packaging material supply,labor,general,Europe,4,global,Trigger,True,True,True,True,True,True,FIXED: industry manufacturing
+77,Turkish steel exports surge as Russian supply cut from Western markets,economic,manufacturing,Global,4,global,Amplifier,True,True,True,True,True,True,FIXED: industry manufacturing
+78,Colombian port strike disrupts coffee banana and coal export schedules,labor,food,Colombia,4,global,Trigger,True,True,True,True,True,True,All correct
+79,Philippine semiconductor assembly plant damaged by flooding in Laguna province,natural_disaster,semiconductor,Philippines,5,global,Trigger,True,True,True,True,True,True,All correct
+80,Swiss watchmaker Swatch reports movement component shortage from Asian suppliers,component_shortage,manufacturing,Asia,4,regional,Propagation,True,True,True,True,True,True,"FIXED: category component_shortage, industry electronics"
+81,Bangladeshi ready made garment exports drop as brands diversify to Vietnam,economic,apparel,Bangladesh,3,regional,Response,True,True,True,True,True,True,All correct
+82,Egyptian Suez Canal revenues surge as Red Sea crisis diverts traffic northward,geopolitical,logistics,Red Sea Region,4,global,Propagation,True,True,True,True,True,True,"FIXED: industry logistics, signal Propagation kept"
+83,Indonesian palm oil export ban causes global food inflation concerns,trade_policy,food,Global,5,global,Trigger,True,True,True,True,True,True,FIXED: industry food
 84,Kenyan tea auction suspended following drought and infrastructure collapse,weather,food,Kenya,4,global,Trigger,True,True,True,True,True,True,All correct
-85,Cambodian garment factories close as European fast fashion brands cut orders,Demand Shock,general,Cambodia,5,global,Trigger,False,False,True,True,True,True,Category non-standard 'Demand Shock'; industry wrong: apparel not general
-86,Mexican auto exports hit record high as nearshoring accelerates post pandemic,Market Shift,automotive,North America,1,global,Propagation,False,True,True,True,True,False,Category non-standard 'Market Shift'; signal wrong: record exports = Recovery not Propagation
-87,Norwegian salmon farming disrupted by sea lice outbreak affecting exports,Biological Contamination,food,Norway,4,global,Trigger,False,True,True,True,True,True,Category non-standard 'Biological Contamination'
-88,Ghanaian cocoa output falls sharply amid disease and climate stress,weather,food,West Africa,5,global,Amplifier,True,True,True,True,True,True,All correct
-89,US semiconductor CHIPS Act funding delays frustrate fab construction timelines,geopolitical,semiconductor,United States,4,global,Propagation,True,True,True,True,True,True,All correct
-90,European wind turbine supply chain faces steel and rare earth bottlenecks,Supply Shortage,energy,Europe,4,global,Amplifier,False,True,True,True,True,True,Category non-standard 'Supply Shortage'
-91,South Korean shipyard order backlog hits 3 year high amid vessel shortage,Supply Shortage,general,South Korea,4,global,Amplifier,False,True,True,True,True,True,Category non-standard 'Supply Shortage'
-92,Indian steel exports surge as China domestic demand weakens sharply,Market Shift,logistics,Asia,4,global,Propagation,False,False,True,True,True,True,Category non-standard 'Market Shift'; industry wrong: manufacturing not logistics
-93,Brazilian iron ore shipments disrupted by Vale dam safety inspection closure,Regulatory/Operational,general,Brazil,4,global,Trigger,False,True,True,True,True,True,Category non-standard 'Regulatory/Operational'
+85,Cambodian garment factories close as European fast fashion brands cut orders,economic,apparel,Cambodia,5,global,Trigger,True,True,True,True,True,True,All correct
+86,Mexican auto exports hit record high as nearshoring accelerates post pandemic,economic,automotive,North America,1,global,Recovery,True,True,True,True,True,True,All correct
+87,Norwegian salmon farming disrupted by sea lice outbreak affecting exports,weather,food,Norway,4,global,Propagation,True,True,True,True,True,True,All correct
+88,Ghanaian cocoa output falls sharply amid disease and climate stress,weather,food,West Africa,5,global,Trigger,True,True,True,True,True,True,All correct
+89,US semiconductor CHIPS Act funding delays frustrate fab construction timelines,trade_policy,semiconductor,United States,4,global,Precursor,True,True,True,True,True,True,FIXED: trade_policy
+90,European wind turbine supply chain faces steel and rare earth bottlenecks,component_shortage,energy,Europe,4,global,Amplifier,True,True,True,True,True,True,FIXED: industry manufacturing
+91,South Korean shipyard order backlog hits 3 year high amid vessel shortage,port,logistics,South Korea,4,global,Propagation,True,True,True,True,True,True,All correct
+92,Indian steel exports surge as China domestic demand weakens sharply,economic,manufacturing,Asia,4,global,Propagation,True,True,True,True,True,True,"FIXED: economic, manufacturing"
+93,Brazilian iron ore shipments disrupted by Vale dam safety inspection closure,regulatory,mining,Brazil,4,global,Amplifier,True,True,True,True,True,True,FIXED: regulatory
+94,Moroccan automotive cluster faces wire harness shortage from Ukrainian suppliers,component_shortage,automotive,Morocco,4,global,Trigger,True,True,True,True,True,True,All correct
+95,Swedish EV battery startup Northvolt announces gigafactory production delays,factory,automotive,Sweden,5,global,Response,True,True,True,True,True,True,All correct
+96,Japanese automakers cut production guidance citing ongoing semiconductor shortage,component_shortage,semiconductor,Japan,4,global,Trigger,True,True,True,True,True,True,All correct
+97,US pharmaceutical supply chain audit reveals 80 percent API dependency on China,economic,pharmaceutical,US,5,global,Precursor,True,True,True,True,True,True,FIXED: industry pharmaceutical
+98,Taiwanese display panel makers report inventory glut as consumer demand falls,economic,electronics,Taiwan,4,global,Propagation,True,True,True,True,True,True,"FIXED: economic, electronics"
+99,European chemical industry warns of deindustrialization risk amid energy costs,geopolitical,energy,Europe,5,global,Precursor,True,True,True,True,True,True,All correct
+100,US restricts advanced AI chip exports to China citing national security concerns,geopolitical,semiconductor,"China, United States",5,global,Trigger,True,True,True,True,True,True,All correct

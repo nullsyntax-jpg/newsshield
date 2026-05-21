@@ -1,0 +1,101 @@
+sample_id,category_correct,industry_correct,region_correct,severity_correct,propagation_correct,signal_correct,notes
+1,True,True,True,True,True,True,FIXED: signal now Precursor
+2,True,True,True,True,True,True,FIXED: industry now logistics
+3,True,True,True,True,True,True,"FIXED: category factory, industry automotive, signal Trigger"
+4,True,True,True,True,True,True,All correct
+5,True,True,True,True,True,True,"FIXED: industry logistics, severity 2"
+6,True,True,True,True,True,True,"FIXED: industry logistics, severity 4"
+7,True,True,False,True,True,True,Region still unknown — should be South/SE Asia
+8,True,True,False,True,True,True,Region still unknown — TSMC is in Taiwan
+9,True,True,True,True,True,True,"FIXED: category economic, region Global"
+10,True,True,True,True,True,True,FIXED: category geopolitical
+11,True,True,True,True,True,True,All correct
+12,True,True,True,True,True,True,FIXED: propagation global
+13,True,True,True,True,True,True,FIXED: industry electronics
+14,True,True,True,True,True,True,All correct
+15,True,True,True,True,True,True,All correct
+16,True,True,True,True,True,True,All correct
+17,True,True,True,True,True,True,"FIXED: natural_disaster, semiconductor"
+18,True,True,True,True,True,True,All correct
+19,True,True,True,True,True,True,FIXED: industry logistics
+20,True,True,True,True,True,True,All correct
+21,True,True,True,True,True,True,"FIXED: economic, chemical"
+22,True,True,True,True,True,True,All correct
+23,True,True,True,True,True,True,FIXED: industry automotive
+24,True,True,True,True,True,True,All correct
+25,True,True,True,True,True,True,All correct
+26,False,True,True,True,True,True,Category still factory — should be pandemic; region fixed to China
+27,True,True,True,True,True,True,FIXED: industry logistics
+28,True,True,True,True,True,True,FIXED: category geopolitical
+29,True,True,True,True,True,True,FIXED: signal Trigger
+30,True,True,True,True,True,True,All correct
+31,True,True,True,True,True,True,All correct
+32,True,True,True,True,True,True,All correct
+33,True,True,True,True,True,True,"FIXED: labor, electronics"
+34,True,True,True,True,True,True,FIXED: propagation global
+35,True,True,True,True,True,True,All correct
+36,True,True,True,True,True,True,"FIXED: category factory, industry pharmaceutical"
+37,True,True,True,True,True,True,All correct
+38,True,True,False,True,True,True,FIXED: category component_shortage; region Nordic still vague
+39,True,True,True,True,True,True,All correct
+40,True,True,True,True,True,True,All correct
+41,True,True,False,True,True,True,FIXED: category/industry; region format North America (US) inconsistent
+42,True,True,True,True,True,True,FIXED: industry electronics
+43,True,True,True,True,True,True,All correct
+44,True,True,True,True,True,True,All correct
+45,True,True,True,True,True,True,All correct
+46,True,True,True,True,True,True,FIXED: industry electronics
+47,True,True,True,True,True,True,All correct
+48,True,True,True,True,True,True,All correct
+49,True,True,True,True,True,True,All correct
+50,True,True,True,True,True,True,FIXED: category economic
+51,True,True,True,True,True,True,FIXED: propagation global
+52,True,True,True,True,True,True,All correct
+53,True,True,True,True,True,True,All correct
+54,True,True,True,True,True,True,FIXED: category economic
+55,True,True,True,True,True,True,FIXED: industry logistics
+56,True,True,True,True,True,True,All correct
+57,True,True,True,True,True,True,All correct
+58,True,True,True,True,True,True,"FIXED: trade_policy, agriculture, signal Precursor"
+59,True,True,True,True,True,True,All correct
+60,True,True,True,True,True,True,All correct
+61,True,True,True,True,True,True,"FIXED: infrastructure_failure, logistics"
+62,True,True,True,True,True,True,FIXED: category component_shortage
+63,True,True,True,True,True,True,All correct
+64,True,True,True,True,True,True,FIXED: industry manufacturing
+65,True,True,True,True,True,True,FIXED: propagation global
+66,True,True,True,True,True,True,FIXED: industry food
+67,True,True,True,True,True,True,All correct
+68,True,True,True,True,True,True,FIXED: category component_shortage
+69,True,True,True,True,True,True,All correct
+70,True,True,True,True,True,True,All correct
+71,True,True,True,True,True,True,"FIXED: category component_shortage, industry automotive"
+72,True,True,True,True,True,True,FIXED: category weather
+73,True,True,True,True,True,True,FIXED: industry electronics
+74,True,True,True,True,True,True,FIXED: industry logistics
+75,True,True,True,True,True,True,All correct
+76,True,True,True,True,True,True,FIXED: industry manufacturing
+77,True,True,True,True,True,True,FIXED: industry manufacturing
+78,True,True,True,True,True,True,All correct
+79,True,True,True,True,True,True,All correct
+80,True,True,True,True,True,True,"FIXED: category component_shortage, industry electronics"
+81,True,True,True,True,True,True,All correct
+82,True,True,True,True,True,True,"FIXED: industry logistics, signal Propagation kept"
+83,True,True,True,True,True,True,FIXED: industry food
+84,True,True,True,True,True,True,All correct
+85,True,True,True,True,True,True,All correct
+86,True,True,True,True,True,True,All correct
+87,True,True,True,True,True,True,All correct
+88,True,True,True,True,True,True,All correct
+89,True,True,True,True,True,True,FIXED: trade_policy
+90,True,True,True,True,True,True,FIXED: industry manufacturing
+91,True,True,True,True,True,True,All correct
+92,True,True,True,True,True,True,"FIXED: economic, manufacturing"
+93,True,True,True,True,True,True,FIXED: regulatory
+94,True,True,True,True,True,True,All correct
+95,True,True,True,True,True,True,All correct
+96,True,True,True,True,True,True,All correct
+97,True,True,True,True,True,True,FIXED: industry pharmaceutical
+98,True,True,True,True,True,True,"FIXED: economic, electronics"
+99,True,True,True,True,True,True,All correct
+100,True,True,True,True,True,True,All correct
