@@ -11,31 +11,78 @@ load_dotenv()
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 # ── Prompt template ──────────────────────────────────────────────────────────
+
 def build_prompt(headline: str) -> str:
     return f"""You are a supply chain risk analyst. Read the news headline below and extract structured risk information.
 
 Return ONLY a valid JSON object with exactly these 6 fields. No explanation, no markdown, just raw JSON.
 
-Fields:
-- disruption_category: one of [port, factory, geopolitical, weather, labor, trade_policy, none]
-- affected_industry: one of [semiconductor, automotive, pharmaceutical, food, energy, logistics, general, none]
-- region: country or region name as a string (e.g. "Taiwan", "Southeast Asia"), or "unknown"
-- severity_score: integer from 1 (minor) to 5 (catastrophic), or 0 if not supply chain related
-- propagation_risk: one of [local, regional, global, none]
-- signal_type: one of [Precursor, Trigger, Amplifier, Propagation, Response, Recovery, none]
+EXTRACTION RULES:
 
-Signal type definitions:
-- Precursor: early warning signs before a crisis
-- Trigger: the actual event causing disruption
-- Amplifier: factors worsening an existing disruption
-- Propagation: disruption spreading to other regions or industries
-- Response: government or company actions taken
-- Recovery: signs the situation is improving
-- none: article is not related to supply chain
+DISRUPTION_CATEGORY — pick the single best fit:
+  geopolitical        = war, sanctions, political instability, military action
+  trade_policy        = tariffs, export bans, import restrictions, regulations
+  labor               = strikes, protests, worker shortages
+  weather             = storms, drought, floods (climate-driven)
+  natural_disaster    = earthquakes, typhoons, tsunamis (sudden geophysical)
+  factory             = plant fires, explosions, production halts, fab delays
+  port                = port congestion, canal blockages, shipping route closure
+  pandemic            = disease outbreaks, lockdowns, health crises
+  regulatory          = government inspections, safety bans, compliance failures
+  economic            = price crashes, currency collapse, bankruptcy, demand shifts
+  infrastructure_failure = power outages, pipeline breaks, bridge collapse
+  component_shortage  = parts/material scarcity, lead time spikes, supply gaps
+  cyber               = cyberattacks, ransomware, data breaches
+  none                = no disruption present
+
+AFFECTED_INDUSTRY — pick the single most directly impacted:
+  semiconductor   = chips, fabs, wafers, PCBs, chip equipment
+  automotive      = cars, EVs, auto parts, OEMs
+  logistics       = shipping, ports, freight, rail, trucking
+  food            = agriculture, crops, food processing, beverages
+  energy          = oil, gas, power, renewables, utilities
+  pharmaceutical  = drugs, APIs, biotech, medical devices
+  apparel         = garments, textiles, fast fashion
+  agriculture     = raw crops, fertilizers, farming (pre-processing)
+  electronics     = consumer electronics, phones, laptops, displays
+  chemical        = industrial chemicals, petrochemicals, specialty chemicals
+  manufacturing   = general industrial production, steel, packaging
+  mining          = metals, minerals, copper, lithium, iron ore extraction
+  aerospace       = aircraft, defense, satellites, aviation
+  general         = ONLY if truly no specific industry applies
+  none            = no industry impact
+
+SEVERITY_SCORE — integer 1 to 5:
+  1 = minimal, localized, temporary
+  2 = minor disruption, limited geographic impact
+  3 = moderate disruption, some supply chain effect
+  4 = major disruption, significant regional/global effect
+  5 = critical, systemic, multi-sector or prolonged global impact
+
+PROPAGATION_RISK:
+  local    = impact stays within a city/facility
+  regional = impact spreads within one country or sub-region
+  global   = impact crosses multiple regions or affects world markets
+  none     = no propagation expected
+
+SIGNAL_TYPE:
+  Precursor   = early warning, risk building but disruption not yet occurred
+  Trigger     = direct cause or onset of a disruption event
+  Amplifier   = worsens or extends an already active disruption
+  Propagation = downstream effect spreading to a new sector or region
+  Response    = policy, corporate, or government reaction to a disruption
+  Recovery    = situation improving, returning toward normal
+  none        = not a supply chain signal
+
+REGION:
+  - Always name the specific country or region (e.g. "Taiwan", "West Africa", "North America")
+  - If multiple regions affected, list them comma-separated (e.g. "China, United States")
+  - Only use "unknown" if the headline contains zero geographic information
 
 Headline: "{headline}"
 
 JSON:"""
+
 
 # ── Extract one headline ─────────────────────────────────────────────────────
 def extract_signal(headline: str) -> dict:
