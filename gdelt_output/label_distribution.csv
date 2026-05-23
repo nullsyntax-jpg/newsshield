@@ -1,0 +1,4 @@
+split,total,label_1,label_0,pct_positive
+train_original,100,40,60,40.0
+train_smote,120,60,60,50.0
+test,0,0,0,
