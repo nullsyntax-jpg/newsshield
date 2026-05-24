@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: newsshield-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: ENV
+        value: production
+      - key: OPENAI_API_KEY
+        sync: false          # set manually in Render dashboard
+      - key: ALLOWED_ORIGINS
+        value: '["https://newsshield.vercel.app"]'
+    healthCheckPath: /health
