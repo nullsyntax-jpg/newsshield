@@ -1,0 +1,1002 @@
+[
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "semiconductor",
+    "region": "Taiwan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Taiwan semiconductor orders decline for third consecutive month amid geopolitical tensions",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "logistics",
+    "region": "Egypt",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Ever Given container ship runs aground blocking Suez Canal entirely",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "automotive",
+    "region": "North America",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Toyota halts US assembly lines as Japanese chip shortages reach North American plants",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "semiconductor",
+    "region": "United States",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Biden invokes Defense Production Act to accelerate domestic semiconductor manufacturing",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "logistics",
+    "region": "Egypt",
+    "severity_score": 2,
+    "propagation_risk": "global",
+    "signal_type": "Recovery",
+    "headline": "Suez Canal fully reopened as Ever Given refloated after six day blockage",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "logistics",
+    "region": "United States",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Dockworkers strike at LA port compounds already critical chip shortage for automakers",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "logistics",
+    "region": "unknown",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "semiconductor",
+    "region": "unknown",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "TSMC Fab 14 forced to halt production after major fire destroys cleanroom",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "semiconductor",
+    "region": "unknown",
+    "severity_score": 1,
+    "propagation_risk": "none",
+    "signal_type": "Recovery",
+    "headline": "Semiconductor lead times fall below 20 weeks for first time since 2020 chip crisis",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "food",
+    "region": "West Africa",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Red Sea shipping delays now hitting food retailers in West Africa UN warns",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "automotive",
+    "region": "China",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "China imposes export restrictions on rare earth minerals used in EV batteries",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "energy",
+    "region": "Europe",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Russian oil sanctions force European refineries to seek alternative suppliers",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "electronics",
+    "region": "China, India",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Apple shifts iPhone production from China to India amid geopolitical tensions",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "logistics",
+    "region": "global",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Global container shipping rates hit record high as demand surges post pandemic",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "semiconductor",
+    "region": "China",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "ASML restricts shipment of chip making equipment to China following US pressure",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "automotive",
+    "region": "Germany",
+    "severity_score": 4,
+    "propagation_risk": "regional",
+    "signal_type": "Response",
+    "headline": "Volkswagen announces closure of three German factories amid EV transition challenges",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "semiconductor",
+    "region": "United States",
+    "severity_score": 4,
+    "propagation_risk": "local",
+    "signal_type": "Recovery",
+    "headline": "Samsung Austin fab resumes production after Texas winter storm power outages",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "food",
+    "region": "India",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "India imposes export ban on wheat following domestic shortage concerns",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "logistics",
+    "region": "Red Sea",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Maersk reroutes vessels around Cape of Good Hope avoiding Red Sea entirely",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "food",
+    "region": "Ukraine",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Ukraine grain export corridor suspended following Russian withdrawal from deal",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "chemical",
+    "region": "Europe",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "BASF cuts chemical output by 25 percent due to European energy rationing",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "electronics",
+    "region": "Philippines",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Philippine typhoon disrupts electronics manufacturing in Clark economic zone",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "automotive",
+    "region": "North America",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "US imposes 100 percent tariffs on Chinese electric vehicles effective immediately",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "automotive",
+    "region": "Global",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Lithium carbonate prices crash 80 percent disrupting battery supply chain planning",
+    "status": "success"
+  },
+  {
+    "disruption_category": "regulatory",
+    "affected_industry": "aerospace",
+    "region": "Global",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Boeing 737 MAX grounded globally following second fatal crash in five months",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "logistics",
+    "region": "East Asia",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Shanghai port throughput falls 40 percent during two month COVID lockdown",
+    "status": "success"
+  },
+  {
+    "disruption_category": "weather",
+    "affected_industry": "logistics",
+    "region": "Central America",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Panama Canal reduces daily transits by half due to historic drought water levels",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "logistics",
+    "region": "Red Sea",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Houthi militants attack Maersk container vessel in Red Sea with missile strike",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "automotive",
+    "region": "North America",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "UAW strikes Ford GM and Stellantis simultaneously for first time in history",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "automotive",
+    "region": "United States",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Key Bridge Baltimore collapse closes major US auto import port for months",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "semiconductor",
+    "region": "Taiwan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "TSMC evacuates fabs temporarily following 7.4 magnitude Taiwan earthquake",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "energy",
+    "region": "Europe",
+    "severity_score": 3,
+    "propagation_risk": "regional",
+    "signal_type": "Response",
+    "headline": "EU launches anti dumping investigation into Chinese solar panel imports",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "electronics",
+    "region": "China",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Foxconn Zhengzhou iPhone factory output cut as worker protests intensify",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "semiconductor",
+    "region": "Japan, China",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Japan restricts export of chipmaking chemicals to China following US lead",
+    "status": "success"
+  },
+  {
+    "disruption_category": "weather",
+    "affected_industry": "food",
+    "region": "Brazil",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "Brazilian drought threatens soybean harvest and global food supply chains",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "pharmaceutical",
+    "region": "Germany",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "German pharmaceutical company halts API production due to gas supply cuts",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "general",
+    "region": "North America, Asia-Pacific",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Mexico overtakes China as top US trading partner amid nearshoring trend",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "semiconductor",
+    "region": "Nordic",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Nordic semiconductor fab announces 6 month delay due to equipment shortages",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "automotive",
+    "region": "Australia",
+    "severity_score": 5,
+    "propagation_risk": "regional",
+    "signal_type": "Recovery",
+    "headline": "Australia halts lithium spodumene exports amid price collapse and oversupply",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "automotive",
+    "region": "Italy",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Italian automotive supplier files bankruptcy amid EV transition difficulties",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "automotive",
+    "region": "North America (US)",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "South Korean battery maker LG Energy announces US gigafactory delay",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "electronics",
+    "region": "Taiwan, United States",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Taiwanese PCB manufacturers report order cancellations from US customers",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "logistics",
+    "region": "Northern France",
+    "severity_score": 4,
+    "propagation_risk": "regional",
+    "signal_type": "Amplifier",
+    "headline": "French port workers strike halts fuel distribution across northern France",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "apparel",
+    "region": "Bangladesh",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Bangladesh garment factory closures spike amid labor unrest and flooding",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "mining",
+    "region": "South America",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Chilean copper mine strike enters third week threatening global supply",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "electronics",
+    "region": "Vietnam",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Vietnam electronics exports fall sharply as Samsung shifts orders to India",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "automotive",
+    "region": "Canada",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Canadian rail strike disrupts grain potash and auto parts shipments coast to coast",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "automotive",
+    "region": "Indonesia",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Indonesia bans nickel ore exports to force domestic battery processing investment",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "apparel",
+    "region": "Southeast Asia",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Myanmar coup disrupts garment supply chains for European fashion brands",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "automotive",
+    "region": "Turkey",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Turkish lira collapse forces auto parts suppliers to halt dollar denominated contracts",
+    "status": "success"
+  },
+  {
+    "disruption_category": "regulatory",
+    "affected_industry": "pharmaceutical",
+    "region": "India",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Pfizer API supplier in India shuts down following FDA inspection failure",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "logistics",
+    "region": "Global",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "Amazon warns of holiday season delays due to port congestion and driver shortage",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "semiconductor",
+    "region": "Global",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "Qualcomm reports 6 month chip lead times as smartphone demand recovery stalls",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "energy",
+    "region": "Global",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "OPEC plus cuts oil production by 2 million barrels per day amid recession fears",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "logistics",
+    "region": "Mediterranean, Greece",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Greek shipping strike halts Mediterranean cargo operations for second week",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "food",
+    "region": "Pakistan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "Pakistani floods destroy cotton crop threatening global textile supply chains",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "food",
+    "region": "Sri Lanka",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Sri Lanka economic collapse disrupts tea and rubber export supply chains",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "agriculture",
+    "region": "Morocco",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Morocco phosphate export disruption threatens global fertilizer availability",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "energy",
+    "region": "Nigeria (West Africa)",
+    "severity_score": 4,
+    "propagation_risk": "regional",
+    "signal_type": "Amplifier",
+    "headline": "Nigerian oil pipeline sabotage cuts production by 200000 barrels per day",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "logistics",
+    "region": "Taiwan Strait",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Taiwan Strait military exercises disrupt commercial shipping lane traffic",
+    "status": "success"
+  },
+  {
+    "disruption_category": "infrastructure_failure",
+    "affected_industry": "logistics",
+    "region": "South Africa",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "South African port congestion reaches crisis levels amid infrastructure failures",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "semiconductor",
+    "region": "Japan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Japanese auto production cut due to legacy chip shortage from Malaysian fab fire",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "semiconductor",
+    "region": "Global",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "US China chip war escalates as Beijing restricts gallium and germanium exports",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "manufacturing",
+    "region": "Europe",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "European steel mills shut down as energy costs make production unviable",
+    "status": "success"
+  },
+  {
+    "disruption_category": "regulatory",
+    "affected_industry": "pharmaceutical",
+    "region": "India",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Indian pharmaceutical regulator bans 14 drug formulations citing quality issues",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "food",
+    "region": "Latin America",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Mexico avocado export disruption as cartel roadblocks cut Michoacan supply routes",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "food",
+    "region": "East Africa",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Kenyan flower exports collapse as cold chain logistics break down at Nairobi airport",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "semiconductor",
+    "region": "Singapore",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Singapore semiconductor equipment firm reports 18 month delivery backlog",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "logistics",
+    "region": "Netherlands",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Dutch horticultural exports disrupted by trucker protest blocking highways",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "mining",
+    "region": "South America",
+    "severity_score": 4,
+    "propagation_risk": "regional",
+    "signal_type": "Trigger",
+    "headline": "Peru copper mine forced to suspend operations after community blockade",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "automotive",
+    "region": "Thailand, Japan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Thailand auto parts exports fall as Japanese OEM orders cut amid chip shortage",
+    "status": "success"
+  },
+  {
+    "disruption_category": "weather",
+    "affected_industry": "food",
+    "region": "Romania, Europe",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "Romanian wheat harvest failure worsens European food supply concerns",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "electronics",
+    "region": "Taiwan, Vietnam, China",
+    "severity_score": 3,
+    "propagation_risk": "regional",
+    "signal_type": "Response",
+    "headline": "Taiwanese notebook makers shift final assembly to Vietnam amid China risk",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "logistics",
+    "region": "US West Coast",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "US West Coast dockworker contract talks collapse raising strike threat",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "automotive",
+    "region": "Europe",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Chinese battery manufacturer CATL pauses European gigafactory investment",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "general",
+    "region": "Europe",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Finnish pulp mill strike disrupts European packaging material supply",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "manufacturing",
+    "region": "Global",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Turkish steel exports surge as Russian supply cut from Western markets",
+    "status": "success"
+  },
+  {
+    "disruption_category": "labor",
+    "affected_industry": "food",
+    "region": "Colombia",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Colombian port strike disrupts coffee banana and coal export schedules",
+    "status": "success"
+  },
+  {
+    "disruption_category": "natural_disaster",
+    "affected_industry": "semiconductor",
+    "region": "Philippines",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Philippine semiconductor assembly plant damaged by flooding in Laguna province",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "manufacturing",
+    "region": "Asia",
+    "severity_score": 4,
+    "propagation_risk": "regional",
+    "signal_type": "Propagation",
+    "headline": "Swiss watchmaker Swatch reports movement component shortage from Asian suppliers",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "apparel",
+    "region": "Bangladesh",
+    "severity_score": 3,
+    "propagation_risk": "regional",
+    "signal_type": "Response",
+    "headline": "Bangladeshi ready made garment exports drop as brands diversify to Vietnam",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "logistics",
+    "region": "Red Sea Region",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Egyptian Suez Canal revenues surge as Red Sea crisis diverts traffic northward",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "food",
+    "region": "Global",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Indonesian palm oil export ban causes global food inflation concerns",
+    "status": "success"
+  },
+  {
+    "disruption_category": "weather",
+    "affected_industry": "food",
+    "region": "Kenya",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Kenyan tea auction suspended following drought and infrastructure collapse",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "apparel",
+    "region": "Cambodia",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Cambodian garment factories close as European fast fashion brands cut orders",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "automotive",
+    "region": "North America",
+    "severity_score": 1,
+    "propagation_risk": "global",
+    "signal_type": "Recovery",
+    "headline": "Mexican auto exports hit record high as nearshoring accelerates post pandemic",
+    "status": "success"
+  },
+  {
+    "disruption_category": "weather",
+    "affected_industry": "food",
+    "region": "Norway",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Norwegian salmon farming disrupted by sea lice outbreak affecting exports",
+    "status": "success"
+  },
+  {
+    "disruption_category": "weather",
+    "affected_industry": "food",
+    "region": "West Africa",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Ghanaian cocoa output falls sharply amid disease and climate stress",
+    "status": "success"
+  },
+  {
+    "disruption_category": "trade_policy",
+    "affected_industry": "semiconductor",
+    "region": "United States",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "US semiconductor CHIPS Act funding delays frustrate fab construction timelines",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "energy",
+    "region": "Europe",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "European wind turbine supply chain faces steel and rare earth bottlenecks",
+    "status": "success"
+  },
+  {
+    "disruption_category": "port",
+    "affected_industry": "logistics",
+    "region": "South Korea",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "South Korean shipyard order backlog hits 3 year high amid vessel shortage",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "manufacturing",
+    "region": "Asia",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Indian steel exports surge as China domestic demand weakens sharply",
+    "status": "success"
+  },
+  {
+    "disruption_category": "regulatory",
+    "affected_industry": "mining",
+    "region": "Brazil",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Amplifier",
+    "headline": "Brazilian iron ore shipments disrupted by Vale dam safety inspection closure",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "automotive",
+    "region": "Morocco",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Moroccan automotive cluster faces wire harness shortage from Ukrainian suppliers",
+    "status": "success"
+  },
+  {
+    "disruption_category": "factory",
+    "affected_industry": "automotive",
+    "region": "Sweden",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Response",
+    "headline": "Swedish EV battery startup Northvolt announces gigafactory production delays",
+    "status": "success"
+  },
+  {
+    "disruption_category": "component_shortage",
+    "affected_industry": "semiconductor",
+    "region": "Japan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "Japanese automakers cut production guidance citing ongoing semiconductor shortage",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "pharmaceutical",
+    "region": "US",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "US pharmaceutical supply chain audit reveals 80 percent API dependency on China",
+    "status": "success"
+  },
+  {
+    "disruption_category": "economic",
+    "affected_industry": "electronics",
+    "region": "Taiwan",
+    "severity_score": 4,
+    "propagation_risk": "global",
+    "signal_type": "Propagation",
+    "headline": "Taiwanese display panel makers report inventory glut as consumer demand falls",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "energy",
+    "region": "Europe",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Precursor",
+    "headline": "European chemical industry warns of deindustrialization risk amid energy costs",
+    "status": "success"
+  },
+  {
+    "disruption_category": "geopolitical",
+    "affected_industry": "semiconductor",
+    "region": "China, United States",
+    "severity_score": 5,
+    "propagation_risk": "global",
+    "signal_type": "Trigger",
+    "headline": "US restricts advanced AI chip exports to China citing national security concerns",
+    "status": "success"
+  }
+]

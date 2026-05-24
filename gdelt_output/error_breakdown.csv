@@ -1,0 +1,6 @@
+field,sample_id,headline,llm_value,notes
+disruption_category,26,Shanghai port throughput falls 40 percent during two month COVID lockdown,factory,Category still factory — should be pandemic; region fixed to China
+region,7,Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis,unknown,Region still unknown — should be South/SE Asia
+region,8,TSMC Fab 14 forced to halt production after major fire destroys cleanroom,unknown,Region still unknown — TSMC is in Taiwan
+region,38,Nordic semiconductor fab announces 6 month delay due to equipment shortages,Nordic,FIXED: category component_shortage; region Nordic still vague
+region,41,South Korean battery maker LG Energy announces US gigafactory delay,North America (US),FIXED: category/industry; region format North America (US) inconsistent
