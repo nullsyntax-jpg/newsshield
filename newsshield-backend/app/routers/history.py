@@ -58,10 +58,9 @@ def get_history(
             "labor, shipping, trade, economic"
         ),
     ),
-   days: int = Query(
-    default=90,
-    description="Look-back window: 30, 90, or 365 days",
-),
+    days: int = Query(
+        default=90,
+        description="Look-back window: 30, 90, or 365 days",
     ),
 ):
     """
