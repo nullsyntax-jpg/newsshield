@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Query, HTTPException
-from typing import Optional, Literal
+from typing import Optional
 import pandas as pd
 import os
 
@@ -58,9 +58,10 @@ def get_history(
             "labor, shipping, trade, economic"
         ),
     ),
-    days: Literal[30, 90, 365] = Query(
-        default=90,
-        description="Look-back window: 30, 90, or 365 days",
+   days: int = Query(
+    default=90,
+    description="Look-back window: 30, 90, or 365 days",
+),
     ),
 ):
     """
