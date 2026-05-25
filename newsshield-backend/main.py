@@ -1,40 +1,64 @@
+"""
+NewsShield FastAPI application entry point.
+
+Run locally:
+    uvicorn main:app --reload --port 8000
+
+Docs:
+    http://localhost:8000/docs   (Swagger UI)
+    http://localhost:8000/redoc  (ReDoc)
+"""
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from contextlib import asynccontextmanager
-import uvicorn
 
-from app.routers import health, risk, forecast, alerts, predict
 from app.core.config import settings
 
+# --- Import routers -----------------------------------------------------------
+from app.routers import health        # GET /api/v1/health
+from app.routers import risk          # GET /api/v1/risk/...
+from app.routers import forecast      # GET /api/v1/forecast/...
+from app.routers import alerts        # GET /api/v1/alerts/feed   ← new
+from app.routers import predict       # POST /api/v1/predict/...
 
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    print(f"🚀 NewsShield API starting — env: {settings.ENV}")
-    yield
-    print("🛑 NewsShield API shutting down")
-
+# ---------------------------------------------------------------------------
+# App factory
+# ---------------------------------------------------------------------------
 
 app = FastAPI(
-    title="NewsShield API",
-    description="Supply chain disruption prediction API powered by GDELT + LLM signals",
+    title="NewsShield — Supply Chain Disruption API",
     version="1.0.0",
-    lifespan=lifespan,
+    description=(
+        "Real-time supply chain risk signals derived from GDELT news data. "
+        "Provides disruption alerts, risk scores, and ML-based forecasts."
+    ),
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
+# --- CORS (tighten origins in production) ------------------------------------
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.ALLOWED_ORIGINS,
+    allow_origins=getattr(settings, "CORS_ORIGINS", ["*"]),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(health.router,   tags=["Health"])
-app.include_router(risk.router,     prefix="/api/v1", tags=["Risk Scores"])
-app.include_router(forecast.router, prefix="/api/v1", tags=["Forecast"])
-app.include_router(alerts.router,   prefix="/api/v1", tags=["Alerts"])
-app.include_router(predict.router,  prefix="/api/v1", tags=["Prediction"])
+# --- Register routers ---------------------------------------------------------
+API_PREFIX = "/api/v1"
+
+app.include_router(health.router,   prefix=API_PREFIX)
+app.include_router(risk.router,     prefix=API_PREFIX)
+app.include_router(forecast.router, prefix=API_PREFIX)
+app.include_router(alerts.router,   prefix=API_PREFIX)   # ← /api/v1/alerts/feed
+app.include_router(predict.router,  prefix=API_PREFIX)
 
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+# ---------------------------------------------------------------------------
+# Root redirect (optional quality-of-life)
+# ---------------------------------------------------------------------------
+
+@app.get("/", include_in_schema=False)
+def root():
+    return {"message": "NewsShield API is running. Visit /docs for the API reference."}
