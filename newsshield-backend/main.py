@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import uvicorn
 
-from app.routers import health, risk, forecast, alerts
+from app.routers import health, risk, forecast, alerts, predict
 from app.core.config import settings
 
 
@@ -21,9 +21,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# ── CORS ────────────────────────────────────────────────────────────────────
-# Allows Member B's React frontend (any localhost port in dev, specific
-# origin in prod) to call this API without browser CORS errors.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.ALLOWED_ORIGINS,
@@ -32,11 +29,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Routers ──────────────────────────────────────────────────────────────────
-app.include_router(health.router, tags=["Health"])
+app.include_router(health.router,   tags=["Health"])
 app.include_router(risk.router,     prefix="/api/v1", tags=["Risk Scores"])
 app.include_router(forecast.router, prefix="/api/v1", tags=["Forecast"])
 app.include_router(alerts.router,   prefix="/api/v1", tags=["Alerts"])
+app.include_router(predict.router,  prefix="/api/v1", tags=["Prediction"])
 
 
 if __name__ == "__main__":
