@@ -1,0 +1,11 @@
+sample_id,headline,disruption_category,affected_industry,region,severity_score,propagation_risk,signal_type,category_correct,industry_correct,region_correct,severity_correct,propagation_correct,signal_correct
+1,Taiwan semiconductor orders decline for third consecutive month amid geopolitical tensions,geopolitical,semiconductor,Taiwan,4,global,Precursor,True,True,True,True,True,True
+2,"Ever Given container ship runs aground, blocking Suez Canal entirely",port,general,Suez Canal,5,global,Trigger,True,True,True,True,True,True
+3,Toyota halts US assembly lines as Japanese chip shortages reach North American plants,factory,automotive,North America,4,regional,Trigger,True,True,True,True,True,True
+4,Biden invokes Defense Production Act to accelerate domestic semiconductor manufacturing,geopolitical,semiconductor,United States,4,global,Response,True,True,True,True,True,True
+5,Suez Canal fully reopened as Ever Given refloated after six-day blockage,port,logistics,Suez Canal,4,none,Recovery,True,True,True,True,True,True
+6,Dockworkers strike at LA port compounds already critical chip shortage for automakers,labor,automotive,USA,4,global,Amplifier,True,True,True,True,True,True
+7,Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis,weather,logistics,unknown,4,global,Amplifier,True,True,False,True,True,True
+8,TSMC Fab 14 forced to halt production after major fire destroys cleanroom,factory,semiconductor,Taiwan,5,global,Trigger,True,True,True,True,True,True
+9,Semiconductor lead times fall below 20 weeks for first time since 2020 chip crisis,factory,semiconductor,unknown,1,none,Recovery,True,True,False,True,True,True
+10,"Red Sea shipping delays now hitting food retailers in West Africa, UN warns",port,food,West Africa,4,global,Propagation,True,True,True,True,True,True

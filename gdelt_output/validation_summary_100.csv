@@ -1,0 +1,7 @@
+field,correct,wrong,total,accuracy_pct,status
+disruption_category,78,22,100,78.0,FAIL
+affected_industry,68,32,100,68.0,FAIL
+region,94,6,100,94.0,PASS
+severity_score,98,2,100,98.0,PASS
+propagation_risk,95,5,100,95.0,PASS
+signal_type,96,4,100,96.0,PASS

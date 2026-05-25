@@ -1,0 +1,72 @@
+field,sample_id,headline,llm_value,notes
+disruption_category,3,Toyota halts US assembly lines as Japanese chip shortages reach North American p,factory,Category wrong: should be factory/labor; industry wrong: automotive not semiconductor; propagation global; signal Trigger
+disruption_category,9,Semiconductor lead times fall below 20 weeks for first time since 2020 chip cris,economic,Category wrong: Recovery event not factory; region wrong: Global not unknown
+disruption_category,10,Red Sea shipping delays now hitting food retailers in West Africa UN warns,geopolitical,Category wrong: geopolitical not port
+disruption_category,17,Samsung Austin fab resumes production after Texas winter storm power outages,natural_disaster,Category wrong: natural_disaster not weather; industry wrong: semiconductor not energy
+disruption_category,21,BASF cuts chemical output by 25 percent due to European energy rationing,economic,Category wrong: economic not geopolitical; industry wrong: chemical not energy
+disruption_category,26,Shanghai port throughput falls 40 percent during two month COVID lockdown,factory,Category wrong: should be factory/pandemic; region wrong: China not East Asia
+disruption_category,33,Foxconn Zhengzhou iPhone factory output cut as worker protests intensify,labor,Category wrong: labor not geopolitical; industry wrong: electronics not general
+disruption_category,36,German pharmaceutical company halts API production due to gas supply cuts,factory,Category wrong: should be factory; industry wrong: pharmaceutical not energy
+disruption_category,38,Nordic semiconductor fab announces 6 month delay due to equipment shortages,component_shortage,Category wrong: component_shortage not factory; region vague: Nordic needs country
+disruption_category,41,South Korean battery maker LG Energy announces US gigafactory delay,factory,Category wrong: factory ok but industry wrong: automotive not energy; region format inconsistent
+disruption_category,50,Turkish lira collapse forces auto parts suppliers to halt dollar denominated con,economic,Category wrong: economic not infrastructure_failure
+disruption_category,58,Morocco phosphate export disruption threatens global fertilizer availability,trade_policy,Category wrong: should be trade_policy; industry wrong: agriculture not mining; signal wrong: Trigger not Precursor
+disruption_category,61,South African port congestion reaches crisis levels amid infrastructure failures,infrastructure_failure,Category wrong: should be infrastructure_failure; industry wrong: logistics not automotive
+disruption_category,62,Japanese auto production cut due to legacy chip shortage from Malaysian fab fire,factory,Category wrong: Supply Shortage — should be factory
+disruption_category,68,Singapore semiconductor equipment firm reports 18 month delivery backlog,component_shortage,Category wrong: should be component_shortage not port
+disruption_category,71,Thailand auto parts exports fall as Japanese OEM orders cut amid chip shortage,component_shortage,Category typo in key; industry wrong: automotive not semiconductor
+disruption_category,72,Romanian wheat harvest failure worsens European food supply concerns,weather,Category wrong: should be weather not economic
+disruption_category,80,Swiss watchmaker Swatch reports movement component shortage from Asian suppliers,component_shortage,Category wrong: should be component_shortage; industry wrong: manufacturing not logistics
+disruption_category,89,US semiconductor CHIPS Act funding delays frustrate fab construction timelines,trade_policy,Category wrong: should be trade_policy not factory
+disruption_category,92,Indian steel exports surge as China domestic demand weakens sharply,economic,Category wrong: should be economic; industry wrong: manufacturing not logistics
+disruption_category,93,Brazilian iron ore shipments disrupted by Vale dam safety inspection closure,regulatory,Category wrong: should be regulatory not factory
+disruption_category,98,Taiwanese display panel makers report inventory glut as consumer demand falls,economic,Category wrong: should be economic; industry wrong: electronics not logistics
+affected_industry,2,Ever Given container ship runs aground blocking Suez Canal entirely,logistics,Industry wrong: Suez = logistics not automotive
+affected_industry,3,Toyota halts US assembly lines as Japanese chip shortages reach North American p,automotive,Category wrong: should be factory/labor; industry wrong: automotive not semiconductor; propagation global; signal Trigger
+affected_industry,5,Suez Canal fully reopened as Ever Given refloated after six day blockage,logistics,Industry wrong: logistics not automotive; severity wrong: reopening = 2 not 5
+affected_industry,6,Dockworkers strike at LA port compounds already critical chip shortage for autom,logistics,Industry wrong: logistics not semiconductor; severity 4 not 5
+affected_industry,7,Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis,logistics,Industry wrong: logistics not automotive; region wrong: unknown inferable as South/SE Asia
+affected_industry,13,Apple shifts iPhone production from China to India amid geopolitical tensions,electronics,Industry wrong: electronics not general
+affected_industry,17,Samsung Austin fab resumes production after Texas winter storm power outages,semiconductor,Category wrong: natural_disaster not weather; industry wrong: semiconductor not energy
+affected_industry,19,Maersk reroutes vessels around Cape of Good Hope avoiding Red Sea entirely,logistics,Industry wrong: logistics not general
+affected_industry,21,BASF cuts chemical output by 25 percent due to European energy rationing,chemical,Category wrong: economic not geopolitical; industry wrong: chemical not energy
+affected_industry,23,US imposes 100 percent tariffs on Chinese electric vehicles effective immediatel,automotive,Industry wrong: automotive not general
+affected_industry,27,Panama Canal reduces daily transits by half due to historic drought water levels,logistics,Industry wrong: logistics not automotive
+affected_industry,33,Foxconn Zhengzhou iPhone factory output cut as worker protests intensify,electronics,Category wrong: labor not geopolitical; industry wrong: electronics not general
+affected_industry,36,German pharmaceutical company halts API production due to gas supply cuts,pharmaceutical,Category wrong: should be factory; industry wrong: pharmaceutical not energy
+affected_industry,41,South Korean battery maker LG Energy announces US gigafactory delay,automotive,Category wrong: factory ok but industry wrong: automotive not energy; region format inconsistent
+affected_industry,42,Taiwanese PCB manufacturers report order cancellations from US customers,electronics,Industry wrong: electronics not semiconductor
+affected_industry,46,Vietnam electronics exports fall sharply as Samsung shifts orders to India,electronics,Industry wrong: electronics not semiconductor
+affected_industry,55,Greek shipping strike halts Mediterranean cargo operations for second week,logistics,Industry wrong: logistics not automotive
+affected_industry,58,Morocco phosphate export disruption threatens global fertilizer availability,agriculture,Category wrong: should be trade_policy; industry wrong: agriculture not mining; signal wrong: Trigger not Precursor
+affected_industry,61,South African port congestion reaches crisis levels amid infrastructure failures,logistics,Category wrong: should be infrastructure_failure; industry wrong: logistics not automotive
+affected_industry,64,European steel mills shut down as energy costs make production unviable,manufacturing,Industry wrong: manufacturing not energy
+affected_industry,66,Mexico avocado export disruption as cartel roadblocks cut Michoacan supply route,food,Industry wrong: food not automotive
+affected_industry,71,Thailand auto parts exports fall as Japanese OEM orders cut amid chip shortage,automotive,Category typo in key; industry wrong: automotive not semiconductor
+affected_industry,73,Taiwanese notebook makers shift final assembly to Vietnam amid China risk,electronics,Industry wrong: electronics not general
+affected_industry,74,US West Coast dockworker contract talks collapse raising strike threat,logistics,Industry wrong: logistics not general
+affected_industry,76,Finnish pulp mill strike disrupts European packaging material supply,general,Industry wrong: paper/packaging not manufacturing
+affected_industry,77,Turkish steel exports surge as Russian supply cut from Western markets,manufacturing,Industry wrong: manufacturing not logistics
+affected_industry,80,Swiss watchmaker Swatch reports movement component shortage from Asian suppliers,manufacturing,Category wrong: should be component_shortage; industry wrong: manufacturing not logistics
+affected_industry,82,Egyptian Suez Canal revenues surge as Red Sea crisis diverts traffic northward,logistics,Industry wrong: logistics not automotive; signal wrong: keep Propagation
+affected_industry,83,Indonesian palm oil export ban causes global food inflation concerns,food,Industry wrong: food not energy
+affected_industry,92,Indian steel exports surge as China domestic demand weakens sharply,manufacturing,Category wrong: should be economic; industry wrong: manufacturing not logistics
+affected_industry,97,US pharmaceutical supply chain audit reveals 80 percent API dependency on China,pharmaceutical,Industry wrong: pharmaceutical not automotive
+affected_industry,98,Taiwanese display panel makers report inventory glut as consumer demand falls,electronics,Category wrong: should be economic; industry wrong: electronics not logistics
+region,7,Monsoon floods damage key rail links used to reroute cargo after Red Sea crisis,unknown,Industry wrong: logistics not automotive; region wrong: unknown inferable as South/SE Asia
+region,8,TSMC Fab 14 forced to halt production after major fire destroys cleanroom,unknown,Region wrong: unknown — TSMC is in Taiwan
+region,9,Semiconductor lead times fall below 20 weeks for first time since 2020 chip cris,unknown,Category wrong: Recovery event not factory; region wrong: Global not unknown
+region,26,Shanghai port throughput falls 40 percent during two month COVID lockdown,East Asia,Category wrong: should be factory/pandemic; region wrong: China not East Asia
+region,38,Nordic semiconductor fab announces 6 month delay due to equipment shortages,Nordic,Category wrong: component_shortage not factory; region vague: Nordic needs country
+region,41,South Korean battery maker LG Energy announces US gigafactory delay,North America (US),Category wrong: factory ok but industry wrong: automotive not energy; region format inconsistent
+severity_score,5,Suez Canal fully reopened as Ever Given refloated after six day blockage,2,Industry wrong: logistics not automotive; severity wrong: reopening = 2 not 5
+severity_score,6,Dockworkers strike at LA port compounds already critical chip shortage for autom,4,Industry wrong: logistics not semiconductor; severity 4 not 5
+propagation_risk,3,Toyota halts US assembly lines as Japanese chip shortages reach North American p,global,Category wrong: should be factory/labor; industry wrong: automotive not semiconductor; propagation global; signal Trigger
+propagation_risk,12,Russian oil sanctions force European refineries to seek alternative suppliers,global,Propagation wrong: Russian oil sanctions = global not regional
+propagation_risk,34,Japan restricts export of chipmaking chemicals to China following US lead,global,Propagation wrong: chip chemicals = global not regional
+propagation_risk,51,Pfizer API supplier in India shuts down following FDA inspection failure,global,Propagation wrong: pharma API = global not local
+propagation_risk,65,Indian pharmaceutical regulator bans 14 drug formulations citing quality issues,global,Propagation wrong: drug ban = global not regional
+signal_type,1,Taiwan semiconductor orders decline for third consecutive month amid geopolitica,Propagation,Signal should be Precursor not Propagation
+signal_type,3,Toyota halts US assembly lines as Japanese chip shortages reach North American p,Trigger,Category wrong: should be factory/labor; industry wrong: automotive not semiconductor; propagation global; signal Trigger
+signal_type,58,Morocco phosphate export disruption threatens global fertilizer availability,Trigger,Category wrong: should be trade_policy; industry wrong: agriculture not mining; signal wrong: Trigger not Precursor
+signal_type,82,Egyptian Suez Canal revenues surge as Red Sea crisis diverts traffic northward,Propagation,Industry wrong: logistics not automotive; signal wrong: keep Propagation
