@@ -22,6 +22,7 @@ from app.routers import alerts        # GET /api/v1/alerts/feed   ← new
 from app.routers import predict       # POST /api/v1/predict/...
 from app.routers import history       # GET /api/v1/history
 from app.routers import search        # GET /api/v1/search
+from app.routers import ask           # POST /api/v1/ask
 
 # ---------------------------------------------------------------------------
 # App factory
@@ -57,6 +58,7 @@ app.include_router(alerts.router,   prefix=API_PREFIX)   # ← /api/v1/alerts/fe
 app.include_router(predict.router,  prefix=API_PREFIX)
 app.include_router(history.router, prefix=API_PREFIX)
 app.include_router(search.router, prefix=API_PREFIX)
+app.include_router(ask.router, prefix=API_PREFIX)
 
 # ---------------------------------------------------------------------------
 # Root redirect (optional quality-of-life)

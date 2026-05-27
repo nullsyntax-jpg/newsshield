@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings,SettingsConfigDict
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import List
 
 
@@ -8,13 +8,11 @@ class Settings(BaseSettings):
     SECRET_KEY: str = "change-me-in-production"
 
     # ── CORS ─────────────────────────────────────────────────────────────────
-    # In dev: allow all localhost ports so Member B can use any Vite/CRA port.
-    # Override in .env for staging/prod with the real Vercel/Netlify URL.
     ALLOWED_ORIGINS: List[str] = [
         "http://localhost:3000",
         "http://localhost:5173",
         "http://localhost:8080",
-        "https://newsshield.vercel.app",   # update when Member B deploys
+        "https://newsshield.vercel.app",
     ]
 
     # ── Data paths ───────────────────────────────────────────────────────────
@@ -23,10 +21,14 @@ class Settings(BaseSettings):
 
     # ── External APIs ────────────────────────────────────────────────────────
     OPENAI_API_KEY: str = ""
+    GROQ_API_KEY: str = ""
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=True,
+        extra="allow",
+    )
 
 
 settings = Settings()
