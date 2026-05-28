@@ -154,6 +154,8 @@ async def ask_newsshield(body: AskRequest):
         sources = _retrieve(body.question, top_k=body.top_k)
     except FileNotFoundError as e:
         raise HTTPException(status_code=503, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=503, detail=f"Retrieval error: {type(e).__name__}: {str(e)}")
 
     if not sources:
         raise HTTPException(status_code=404, detail="No relevant signals found.")
@@ -183,15 +185,18 @@ async def ask_newsshield(body: AskRequest):
 
         return StreamingResponse(event_stream(), media_type="application/x-ndjson")
 
-    else:
-        client = Groq(api_key=settings.GROQ_API_KEY)
-        response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=512,
-            temperature=0.3,
-        )
-        answer = response.choices[0].message.content
+   else:
+        try:
+            client = Groq(api_key=settings.GROQ_API_KEY)
+            response = client.chat.completions.create(
+                model="llama-3.1-8b-instant",
+                messages=[{"role": "user", "content": prompt}],
+                max_tokens=512,
+                temperature=0.3,
+            )
+            answer = response.choices[0].message.content
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"Groq error: {type(e).__name__}: {str(e)}")
 
         return {
             "question":  body.question,
