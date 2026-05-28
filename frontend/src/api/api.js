@@ -15,16 +15,24 @@ export async function getRiskHeatmap() {
 
 // GET /api/v1/risk?region=Middle_East&horizon=21
 // Returns XGBoost risk prediction for a region
-export async function getRisk(industry = 'Semiconductor', region = 'Middle_East', horizon = 21) {
-  const res = await fetch(`${API}/risk?region=${region}&horizon=${horizon}`)
+export async function getRisk(industry = 'Semiconductor', region = null, horizon = 21) {
+  const industryRegionMap = {
+    'Semiconductor': 'East_Asia',
+    'Automotive':    'Europe',
+    'Logistics':     'Middle_East',
+    'Food':          'Africa',
+    'Pharmaceutical':'South_Asia',
+    'Energy':        'Middle_East',
+  }
+  const r = region || industryRegionMap[industry] || 'Middle_East'
+  const res = await fetch(`${API}/risk?region=${r}&horizon=${horizon}`)
   const data = await res.json()
-  // Normalize to what the frontend expects
   return {
-    risk_score:   Math.round((data.risk_score || 0) * 100),
-    trend:        data.warning_level === 'critical' ? 'rising' : 'stable',
-    signals:      data.features_used || 14,
+    risk_score:    Math.round((data.risk_score || 0) * 100),
+    trend:         data.warning_level === 'critical' ? 'rising' : 'stable',
+    signals:       data.features_used || 14,
     warning_level: data.warning_level,
-    region:       data.region,
+    region:        data.region,
   }
 }
 
