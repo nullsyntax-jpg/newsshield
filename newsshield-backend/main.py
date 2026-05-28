@@ -23,6 +23,7 @@ from app.routers import predict       # POST /api/v1/predict/...
 from app.routers import history       # GET /api/v1/history
 from app.routers import search        # GET /api/v1/search
 from app.routers import ask           # POST /api/v1/ask
+from app.routers import subscribe     # POST /api/v1/subscribe, GET /api/v1/stats
 
 # ---------------------------------------------------------------------------
 # App factory
@@ -59,6 +60,7 @@ app.include_router(predict.router,  prefix=API_PREFIX)
 app.include_router(history.router, prefix=API_PREFIX)
 app.include_router(search.router, prefix=API_PREFIX)
 app.include_router(ask.router, prefix=API_PREFIX)
+app.include_router(subscribe.router, prefix=API_PREFIX)
 
 # ---------------------------------------------------------------------------
 # Root redirect (optional quality-of-life)
