@@ -1,16 +1,14 @@
 """
 B7 — Email subscription + stats endpoints
 
-POST /api/v1/subscribe  — saves email + industry + region to CSV, sends welcome email via Gmail SMTP
+POST /api/v1/subscribe  — saves email + industry + region to CSV, sends welcome email via Brevo
 GET  /api/v1/stats      — returns total articles, alerts this month, subscriber count
 """
 
 import os
 import csv
 import json
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import requests
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -66,38 +64,41 @@ def _save_subscriber(email, industry, region):
         })
 
 
-def _send_welcome_email_gmail(email, industry, region):
-    sender     = settings.GMAIL_USER
-    password   = settings.GMAIL_APP_PASSWORD
-
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = "Welcome to NewsShield — Your Supply Chain Risk Monitor"
-    msg["From"]    = f"NewsShield <{sender}>"
-    msg["To"]      = email
-
-    html = f"""
-    <div style="font-family: sans-serif; max-width: 600px; margin: auto;">
-      <h2 style="color: #1a1a2e;">Welcome to NewsShield 🛡️</h2>
-      <p>Hi there,</p>
-      <p>You're now subscribed to <strong>NewsShield</strong> — real-time supply chain
-      disruption intelligence powered by GDELT news data and AI.</p>
-      <p><strong>Your preferences:</strong><br/>
-      Industry: <strong>{industry or 'All'}</strong><br/>
-      Region: <strong>{region or 'Global'}</strong></p>
-      <p>You'll receive alerts when supply chain risks matching your profile are detected.</p>
-      <hr/>
-      <p style="color: #666; font-size: 12px;">
-        NewsShield · Powered by GDELT + AI<br/>
-        <a href="https://newsshield.onrender.com">newsshield.onrender.com</a>
-      </p>
-    </div>
-    """
-
-    msg.attach(MIMEText(html, "html"))
-
-    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-        server.login(sender, password)
-        server.sendmail(sender, email, msg.as_string())
+def _send_welcome_email_brevo(email, industry, region):
+    url = "https://api.brevo.com/v3/smtp/email"
+    headers = {
+        "accept":       "application/json",
+        "content-type": "application/json",
+        "api-key":      settings.BREVO_API_KEY,
+    }
+    payload = {
+        "sender": {
+            "name":  "NewsShield",
+            "email": "janhavipatil1980@gmail.com",
+        },
+        "to": [{"email": email}],
+        "subject": "Welcome to NewsShield — Your Supply Chain Risk Monitor",
+        "htmlContent": f"""
+        <div style="font-family: sans-serif; max-width: 600px; margin: auto;">
+          <h2 style="color: #1a1a2e;">Welcome to NewsShield 🛡️</h2>
+          <p>Hi there,</p>
+          <p>You're now subscribed to <strong>NewsShield</strong> — real-time supply chain
+          disruption intelligence powered by GDELT news data and AI.</p>
+          <p><strong>Your preferences:</strong><br/>
+          Industry: <strong>{industry or 'All'}</strong><br/>
+          Region: <strong>{region or 'Global'}</strong></p>
+          <p>You'll receive alerts when supply chain risks matching your profile are detected.</p>
+          <hr/>
+          <p style="color: #666; font-size: 12px;">
+            NewsShield · Powered by GDELT + AI<br/>
+            <a href="https://newsshield.onrender.com">newsshield.onrender.com</a>
+          </p>
+        </div>
+        """,
+    }
+    response = requests.post(url, json=payload, headers=headers)
+    if response.status_code not in (200, 201):
+        raise Exception(f"Brevo API error {response.status_code}: {response.text}")
 
 
 def _get_stats():
@@ -126,12 +127,12 @@ def _get_stats():
         pass
 
     return {
-        "total_articles_analysed":    total_articles,
+        "total_articles_analysed":     total_articles,
         "alerts_generated_this_month": alerts_this_month,
-        "subscriber_count":           subscriber_count,
-        "regions_monitored":          regions_monitored,
-        "data_sources":               ["GDELT", "GSCPI", "LLM Extraction"],
-        "last_updated":               datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+        "subscriber_count":            subscriber_count,
+        "regions_monitored":           regions_monitored,
+        "data_sources":                ["GDELT", "GSCPI", "LLM Extraction"],
+        "last_updated":                datetime.now(timezone.utc).strftime("%Y-%m-%d"),
     }
 
 
@@ -139,7 +140,7 @@ def _get_stats():
 
 class SubscribeRequest(BaseModel):
     email:    EmailStr = Field(..., description="Subscriber email address")
-    industry: str      = Field(default="all", description="Industry of interest")
+    industry: str      = Field(default="all",    description="Industry of interest")
     region:   str      = Field(default="global", description="Region of interest")
 
 
@@ -158,14 +159,14 @@ def subscribe(body: SubscribeRequest):
     email_sent  = False
     email_error = None
 
-    if settings.GMAIL_USER and settings.GMAIL_APP_PASSWORD:
+    if settings.BREVO_API_KEY:
         try:
-            _send_welcome_email_gmail(body.email, body.industry, body.region)
+            _send_welcome_email_brevo(body.email, body.industry, body.region)
             email_sent = True
         except Exception as e:
             email_error = str(e)
     else:
-        email_error = "GMAIL_USER or GMAIL_APP_PASSWORD not configured"
+        email_error = "BREVO_API_KEY not configured"
 
     return {
         "success":     True,
