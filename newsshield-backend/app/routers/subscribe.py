@@ -74,7 +74,7 @@ def _send_welcome_email_brevo(email, industry, region):
     payload = {
         "sender": {
             "name":  "NewsShield",
-            "email": "janhavipatil1980@gmail.com",
+            "email": "janhavi200515@gmail.com",
         },
         "to": [{"email": email}],
         "subject": "Welcome to NewsShield — Your Supply Chain Risk Monitor",
