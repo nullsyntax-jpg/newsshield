@@ -23,6 +23,8 @@ class Settings(BaseSettings):
     OPENAI_API_KEY: str = ""
     GROQ_API_KEY: str = ""
     RESEND_API_KEY: str = ""
+    GMAIL_USER: str = ""
+    GMAIL_APP_PASSWORD: str = ""
 
     model_config = SettingsConfigDict(
         env_file=".env",
