@@ -81,12 +81,12 @@ export default function Dashboard() {
   }, [industry])
 
   useEffect(() => {
-    getRisk(industry).then(r => setRiskData(r.data))
+    getRisk(industry).then(r => setRiskData(r))
       .catch(() => setRiskData({ risk_score: REGION_RISK[industry]['East Asia'] ?? 60, trend:'rising', signals:14 }))
   }, [industry])
 
   useEffect(() => {
-    getAlerts().then(r => setAlerts(r.data?.alerts || []))
+    getAlerts().then(r => setAlerts(r.alerts || []))
       .catch(() => setAlerts([
         { id:1, severity:'high',   title:'Red Sea shipping crisis ongoing',   industry:'Logistics',     region:'Middle East' },
         { id:2, severity:'high',   title:'Taiwan Strait military exercises',  industry:'Semiconductor', region:'East Asia' },
