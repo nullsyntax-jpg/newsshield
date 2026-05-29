@@ -1,12 +1,10 @@
 """
 B7 — Email subscription + stats endpoints
 
-POST /api/v1/subscribe  — saves email + industry + region to CSV, sends welcome email via Brevo
+POST /api/v1/subscribe  — saves email + industry + region to Supabase, sends welcome email via Brevo
 GET  /api/v1/stats      — returns total articles, alerts this month, subscriber count
 """
 
-import os
-import csv
 import json
 import requests
 from datetime import datetime, timezone
@@ -15,56 +13,48 @@ from pathlib import Path
 import pandas as pd
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field, EmailStr
+from supabase import create_client, Client
 
 from app.core.config import settings
 
 router = APIRouter()
 
-# ── Paths ─────────────────────────────────────────────────────────────────────
-BASE = Path(__file__).resolve().parents[3]
-SUBSCRIBERS_CSV  = BASE / "gdelt_output" / "subscribers.csv"
+# ── Supabase client ────────────────────────────────────────────────────────────
+supabase: Client = create_client(settings.supabase_url, settings.supabase_key)
+
+# ── Paths (still needed for stats — feature_matrix + extractions not in DB yet) ─
+BASE             = Path(__file__).resolve().parents[3]
 FEATURE_MATRIX   = BASE / "gdelt_output" / "feature_matrix.csv"
 EXTRACTIONS_JSON = BASE / "gdelt_output" / "final_extraction_100.json"
-
-SUBSCRIBER_FIELDS = ["email", "industry", "region", "subscribed_at"]
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def _ensure_subscribers_csv():
-    if not SUBSCRIBERS_CSV.exists():
-        with open(SUBSCRIBERS_CSV, "w", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=SUBSCRIBER_FIELDS)
-            writer.writeheader()
+def _email_exists(email: str) -> bool:
+    response = (
+        supabase.table("subscribers")
+        .select("email")
+        .eq("email", email.lower())
+        .execute()
+    )
+    return len(response.data) > 0
 
 
-def _load_subscribers():
-    _ensure_subscribers_csv()
-    try:
-        df = pd.read_csv(SUBSCRIBERS_CSV)
-        return df.to_dict(orient="records")
-    except Exception:
-        return []
+def _save_subscriber(email: str, industry: str, region: str):
+    supabase.table("subscribers").insert({
+        "email":         email.lower(),
+        "industry":      industry,
+        "region":        region,
+        "subscribed_at": datetime.now(timezone.utc).isoformat(),
+    }).execute()
 
 
-def _email_exists(email):
-    subs = _load_subscribers()
-    return any(s.get("email", "").lower() == email.lower() for s in subs)
+def _get_subscriber_count() -> int:
+    response = supabase.table("subscribers").select("id", count="exact").execute()
+    return response.count or 0
 
 
-def _save_subscriber(email, industry, region):
-    _ensure_subscribers_csv()
-    with open(SUBSCRIBERS_CSV, "a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=SUBSCRIBER_FIELDS)
-        writer.writerow({
-            "email":         email,
-            "industry":      industry,
-            "region":        region,
-            "subscribed_at": datetime.now(timezone.utc).isoformat(),
-        })
-
-
-def _send_welcome_email_brevo(email, industry, region):
+def _send_welcome_email_brevo(email: str, industry: str, region: str):
     url = "https://api.brevo.com/v3/smtp/email"
     headers = {
         "accept":       "application/json",
@@ -101,7 +91,7 @@ def _send_welcome_email_brevo(email, industry, region):
         raise Exception(f"Brevo API error {response.status_code}: {response.text}")
 
 
-def _get_stats():
+def _get_stats() -> dict:
     total_articles = 0
     try:
         df = pd.read_csv(FEATURE_MATRIX)
@@ -117,8 +107,6 @@ def _get_stats():
     except Exception:
         pass
 
-    subscriber_count = len(_load_subscribers())
-
     regions_monitored = 0
     try:
         df = pd.read_csv(FEATURE_MATRIX)
@@ -129,7 +117,7 @@ def _get_stats():
     return {
         "total_articles_analysed":     total_articles,
         "alerts_generated_this_month": alerts_this_month,
-        "subscriber_count":            subscriber_count,
+        "subscriber_count":            _get_subscriber_count(),
         "regions_monitored":           regions_monitored,
         "data_sources":                ["GDELT", "GSCPI", "LLM Extraction"],
         "last_updated":                datetime.now(timezone.utc).strftime("%Y-%m-%d"),
