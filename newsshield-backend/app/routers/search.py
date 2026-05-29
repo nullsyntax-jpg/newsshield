@@ -22,22 +22,19 @@ def _load_articles() -> list[dict]:
         data = json.load(f)
     successful = [r for r in data if r.get("status") == "success"]
 
-    # Assign simulated dates spread over last 90 days
-    from datetime import date
-import random
-base = datetime.utcnow()
-total = len(successful)
-for i, rec in enumerate(successful):
-    # Spread dates over last 60 days — all in 2026
-    offset = int((i / max(total - 1, 1)) * 60)
-    rec["article_date"] = (base - timedelta(days=offset)).strftime("%Y-%m-%d")
-     rec["risk_score"] = round((float(rec.get("severity_score", 3)) - 1) / 4, 4)
-    rec["warning_level"] = (
-        "critical" if rec["risk_score"] >= 0.75 else
-         "high"     if rec["risk_score"] >= 0.50 else
-         "medium"   if rec["risk_score"] >= 0.25 else
-         "low"
-     )
+    # Assign simulated dates spread over last 60 days — all in 2026
+    base  = datetime.utcnow()
+    total = len(successful)
+    for i, rec in enumerate(successful):
+        offset = int((i / max(total - 1, 1)) * 60)
+        rec["article_date"] = (base - timedelta(days=offset)).strftime("%Y-%m-%d")
+        rec["risk_score"] = round((float(rec.get("severity_score", 3)) - 1) / 4, 4)
+        rec["warning_level"] = (
+            "critical" if rec["risk_score"] >= 0.75 else
+            "high"     if rec["risk_score"] >= 0.50 else
+            "medium"   if rec["risk_score"] >= 0.25 else
+            "low"
+        )
 
     return successful
 
@@ -66,7 +63,7 @@ def search_articles(
     ),
     min_severity: float = Query(
         default=0.0, ge=0.0, le=1.0,
-        description="Minimum normalised severity score (0–1)",
+        description="Minimum normalised severity score (0-1)",
     ),
     propagation_risk: Optional[str] = Query(
         None,
@@ -78,17 +75,6 @@ def search_articles(
     """
     Keyword + multi-filter search over the extracted article dataset.
     Powers the News Explorer search bar and filter chips on Page 4.
-
-    Filters applied in order:
-      1. query      — matches headline, region, affected_industry (OR logic)
-      2. signal_type
-      3. industry
-      4. region
-      5. disruption_category
-      6. min_severity
-      7. propagation_risk
-
-    Returns paginated article cards with all extracted fields.
     """
     try:
         articles = _load_articles()
@@ -97,7 +83,7 @@ def search_articles(
 
     results = articles
 
-    # ── 1. Keyword search (headline + region + industry) ──────────────────────
+    # ── 1. Keyword search ─────────────────────────────────────────────────────
     if query:
         q = query.strip().lower()
         results = [
@@ -111,34 +97,22 @@ def search_articles(
     # ── 2. Signal type filter ─────────────────────────────────────────────────
     if signal_type:
         st = signal_type.strip().lower()
-        results = [
-            r for r in results
-            if st in r.get("signal_type", "").lower()
-        ]
+        results = [r for r in results if st in r.get("signal_type", "").lower()]
 
     # ── 3. Industry filter ────────────────────────────────────────────────────
     if industry:
         ind = industry.strip().lower()
-        results = [
-            r for r in results
-            if ind in r.get("affected_industry", "").lower()
-        ]
+        results = [r for r in results if ind in r.get("affected_industry", "").lower()]
 
     # ── 4. Region filter ──────────────────────────────────────────────────────
     if region:
         reg = region.strip().lower()
-        results = [
-            r for r in results
-            if reg in r.get("region", "").lower()
-        ]
+        results = [r for r in results if reg in r.get("region", "").lower()]
 
     # ── 5. Disruption category filter ────────────────────────────────────────
     if disruption_category:
         dc = disruption_category.strip().lower()
-        results = [
-            r for r in results
-            if dc in r.get("disruption_category", "").lower()
-        ]
+        results = [r for r in results if dc in r.get("disruption_category", "").lower()]
 
     # ── 6. Min severity filter ────────────────────────────────────────────────
     if min_severity > 0:
@@ -147,19 +121,16 @@ def search_articles(
     # ── 7. Propagation risk filter ────────────────────────────────────────────
     if propagation_risk:
         pr = propagation_risk.strip().lower()
-        results = [
-            r for r in results
-            if pr in r.get("propagation_risk", "").lower()
-        ]
+        results = [r for r in results if pr in r.get("propagation_risk", "").lower()]
 
-    # ── Sort by severity descending ───────────────────────────────────────────
-   results = sorted(results, key=lambda r: r.get("article_date", ""), reverse=True)
-   results = [r for r in results if r.get("article_date", "") >= "2025-01-01"]
+    # ── Sort by date descending, filter to 2025+ ──────────────────────────────
+    results = sorted(results, key=lambda r: r.get("article_date", ""), reverse=True)
+    results = [r for r in results if r.get("article_date", "") >= "2025-01-01"]
 
     # ── Pagination ────────────────────────────────────────────────────────────
-    total   = len(results)
-    start   = (page - 1) * page_size
-    end     = start + page_size
+    total        = len(results)
+    start        = (page - 1) * page_size
+    end          = start + page_size
     page_results = results[start:end]
 
     if not page_results and total == 0:
@@ -187,15 +158,15 @@ def search_articles(
             "total_results": total,
             "page":          page,
             "page_size":     page_size,
-            "total_pages":   max(1, -(-total // page_size)),  # ceiling division
+            "total_pages":   max(1, -(-total // page_size)),
             "filters_applied": {
-                "query":                query,
-                "signal_type":          signal_type,
-                "industry":             industry,
-                "region":               region,
-                "disruption_category":  disruption_category,
-                "min_severity":         min_severity,
-                "propagation_risk":     propagation_risk,
+                "query":               query,
+                "signal_type":         signal_type,
+                "industry":            industry,
+                "region":              region,
+                "disruption_category": disruption_category,
+                "min_severity":        min_severity,
+                "propagation_risk":    propagation_risk,
             },
         },
         "results": cards,
