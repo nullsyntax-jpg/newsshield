@@ -23,18 +23,21 @@ def _load_articles() -> list[dict]:
     successful = [r for r in data if r.get("status") == "success"]
 
     # Assign simulated dates spread over last 90 days
-    base = datetime.utcnow()
-    total = len(successful)
-    for i, rec in enumerate(successful):
-        offset = int((i / max(total - 1, 1)) * 89)
-        rec["article_date"] = (base - timedelta(days=offset)).strftime("%Y-%m-%d")
-        rec["risk_score"] = round((float(rec.get("severity_score", 3)) - 1) / 4, 4)
-        rec["warning_level"] = (
-            "critical" if rec["risk_score"] >= 0.75 else
-            "high"     if rec["risk_score"] >= 0.50 else
-            "medium"   if rec["risk_score"] >= 0.25 else
-            "low"
-        )
+    from datetime import date
+import random
+base = datetime.utcnow()
+total = len(successful)
+for i, rec in enumerate(successful):
+    # Spread dates over last 60 days — all in 2026
+    offset = int((i / max(total - 1, 1)) * 60)
+    rec["article_date"] = (base - timedelta(days=offset)).strftime("%Y-%m-%d")
+     rec["risk_score"] = round((float(rec.get("severity_score", 3)) - 1) / 4, 4)
+    rec["warning_level"] = (
+        "critical" if rec["risk_score"] >= 0.75 else
+         "high"     if rec["risk_score"] >= 0.50 else
+         "medium"   if rec["risk_score"] >= 0.25 else
+         "low"
+     )
 
     return successful
 
@@ -150,7 +153,8 @@ def search_articles(
         ]
 
     # ── Sort by severity descending ───────────────────────────────────────────
-    results = sorted(results, key=lambda r: r.get("severity_score", 0), reverse=True)
+   results = sorted(results, key=lambda r: r.get("article_date", ""), reverse=True)
+   results = [r for r in results if r.get("article_date", "") >= "2025-01-01"]
 
     # ── Pagination ────────────────────────────────────────────────────────────
     total   = len(results)
