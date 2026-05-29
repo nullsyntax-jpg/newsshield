@@ -26,6 +26,8 @@ class Settings(BaseSettings):
     GMAIL_USER: str = ""
     GMAIL_APP_PASSWORD: str = ""
     BREVO_API_KEY: str = ""
+    supabase_url: str = ""
+    supabase_key: str = ""
 
     model_config = SettingsConfigDict(
         env_file=".env",
