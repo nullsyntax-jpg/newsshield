@@ -52,44 +52,65 @@ export default function NewsExplorer() {
   const [aiLoading, setAiLoading] = useState(false)
   const chatRef = useRef(null)
 
-  useEffect(() => {
-    const t = setTimeout(() => {
-      let filtered = MOCK_ARTICLES
-      if (query.trim()) {
-        const q = query.toLowerCase()
-        filtered = filtered.filter(a => a.headline.toLowerCase().includes(q) || a.industry.toLowerCase().includes(q) || a.region.toLowerCase().includes(q))
-      }
-      if (sigFilter !== 'All') filtered = filtered.filter(a => a.signal_type === sigFilter)
-      if (indFilter !== 'All') filtered = filtered.filter(a => a.industry === indFilter)
-      searchNews(query || 'supply chain').then(r => setArticles(r.data?.results || filtered)).catch(() => setArticles(filtered))
-    }, 300)
-    return () => clearTimeout(t)
-  }, [query, sigFilter, indFilter])
+useEffect(() => {
+  const t = setTimeout(() => {
+    searchNews(
+      query || 'supply chain',
+      sigFilter !== 'All' ? sigFilter : null,
+      indFilter !== 'All' ? indFilter : null
+    ).then(r => {
+      const sorted = (r.articles || []).sort((a, b) => 
+        new Date(b.date) - new Date(a.date)
+      )
+      setArticles(sorted.length > 0 ? sorted : MOCK_ARTICLES)
+    }).catch(() => setArticles(MOCK_ARTICLES))
+  }, 300)
+  return () => clearTimeout(t)
+}, [query, sigFilter, indFilter])
 
   useEffect(() => {
     if (chatRef.current) chatRef.current.scrollTop = chatRef.current.scrollHeight
   }, [aiMessages])
 
   const sendMessage = async () => {
-    if (!aiInput.trim() || aiLoading) return
-    const userMsg = aiInput.trim()
-    setAiInput('')
-    setAiMessages(prev => [...prev, { role:'user', text: userMsg }])
-    setAiLoading(true)
-    try {
-      const r = await askAI(userMsg)
-      setAiMessages(prev => [...prev, { role:'assistant', text: r.data?.answer || r.data?.response || 'Analysis complete.' }])
-    } catch {
-      const responses = {
-        default: 'Based on current signal analysis, global supply chain pressure remains elevated. The Red Sea crisis continues to impact logistics with shipping rates up 340%. Semiconductor lead times have stabilized but geopolitical tensions in the Taiwan Strait pose ongoing Precursor signals.',
-        risk:    'Current risk assessment: HIGH for Logistics (Red Sea crisis), MEDIUM-HIGH for Semiconductor (Taiwan tensions), MEDIUM for Automotive (EV transition). Recommend monitoring GSCPI over next 14 days.',
-        predict: 'My 21-day forecast shows elevated disruption probability (68%) for Logistics based on 14 active Trigger and Amplifier signals. Primary drivers: Red Sea rerouting and Panama Canal drought restrictions.',
+  if (!aiInput.trim() || aiLoading) return
+  const userMsg = aiInput.trim()
+  setAiInput('')
+  setAiMessages(prev => [...prev, { role:'user', text: userMsg }])
+  setAiLoading(true)
+  let fullText = ''
+  try {
+    await askAI(
+      userMsg,
+      (token) => {
+        fullText += token
+        setAiMessages(prev => {
+          const msgs = [...prev]
+          if (msgs[msgs.length-1]?.role === 'assistant' && msgs[msgs.length-1]?.streaming) {
+            msgs[msgs.length-1] = { role:'assistant', text: fullText, streaming: true }
+          } else {
+            msgs.push({ role:'assistant', text: fullText, streaming: true })
+          }
+          return msgs
+        })
+      },
+      (sources) => console.log('sources:', sources),
+      () => {
+        setAiMessages(prev => {
+          const msgs = [...prev]
+          if (msgs[msgs.length-1]?.streaming) {
+            msgs[msgs.length-1] = { role:'assistant', text: fullText }
+          }
+          return msgs
+        })
+        setAiLoading(false)
       }
-      const key = userMsg.toLowerCase().includes('risk') ? 'risk' : userMsg.toLowerCase().includes('predict') || userMsg.toLowerCase().includes('forecast') ? 'predict' : 'default'
-      setAiMessages(prev => [...prev, { role:'assistant', text: responses[key] }])
-    }
+    )
+  } catch {
+    setAiMessages(prev => [...prev, { role:'assistant', text: 'Sorry, AI is unavailable right now.' }])
     setAiLoading(false)
   }
+}
 
   const heatmapData = INDUSTRIES.slice(1).map(ind => ({
     industry: ind,
