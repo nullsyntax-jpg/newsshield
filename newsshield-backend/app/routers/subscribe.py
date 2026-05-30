@@ -20,7 +20,7 @@ from app.core.config import settings
 router = APIRouter()
 
 # ── Supabase client ────────────────────────────────────────────────────────────
-supabase: Client = create_client(settings.supabase_url, settings.supabase_key)
+supabase: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
 
 # ── Paths (still needed for stats — feature_matrix + extractions not in DB yet) ─
 BASE             = Path(__file__).resolve().parents[3]
